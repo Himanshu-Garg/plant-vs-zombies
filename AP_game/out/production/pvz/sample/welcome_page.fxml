@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="sample.welcome_page_controller"
+            prefHeight="400.0" prefWidth="600.0">
+
+    <children>
+        <ImageView fitHeight="659.0" fitWidth="1030.0" layoutX="1.0" layoutY="-3.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../../Images%20and%20Resources/BACKGROUND.jpeg" />
+            </image>
+        </ImageView>
+        <ImageView accessibleRole="BUTTON" fitHeight="89.0" fitWidth="241.0" layoutX="388.0" layoutY="84.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../../Images%20and%20Resources/NEWGAME.png" />
+            </image>
+        </ImageView>
+        <ImageView accessibleRole="BUTTON" fitHeight="94.0" fitWidth="241.0" layoutX="390.0" layoutY="181.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../../Images%20and%20Resources/LOAD.png" />
+            </image>
+        </ImageView>
+        <ImageView accessibleRole="BUTTON" fitHeight="72.0" fitWidth="241.0" layoutX="390.0" layoutY="276.0" pickOnBounds="true">
+            <image>
+                <Image url="@../../Images%20and%20Resources/EXIT.png" />
+            </image>
+        </ImageView>
+    </children>
+
+</AnchorPane>
