@@ -1,0 +1,15 @@
+<component name="libraryTable">
+  <library name="javafx.base">
+    <CLASSES>
+      <root url="file://$USER_HOME$/Downloads/javafx-jmods-11.0.2/javafx.base.jmod" />
+      <root url="file://$USER_HOME$/Downloads/javafx-jmods-11.0.2/javafx.controls.jmod" />
+      <root url="file://$USER_HOME$/Downloads/javafx-jmods-11.0.2/javafx.fxml.jmod" />
+      <root url="file://$USER_HOME$/Downloads/javafx-jmods-11.0.2/javafx.graphics.jmod" />
+      <root url="file://$USER_HOME$/Downloads/javafx-jmods-11.0.2/javafx.media.jmod" />
+      <root url="file://$USER_HOME$/Downloads/javafx-jmods-11.0.2/javafx.swing.jmod" />
+      <root url="file://$USER_HOME$/Downloads/javafx-jmods-11.0.2/javafx.web.jmod" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
