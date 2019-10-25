@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="659.0" prefWidth="1129.0" xmlns="http://javafx.com/javafx/8.0.231" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.lawn_controller">
+    <children>
+        <ImageView fitHeight="659.0" fitWidth="1130.0" pickOnBounds="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <image>
+                <Image url="/backyard.png" />
+            </image>
+        </ImageView>
+        <ImageView fitHeight="104.0" fitWidth="109.0" layoutX="187.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../lawn_mower.gif" />
+            </image>
+        </ImageView>
+        <ImageView fitHeight="104.0" fitWidth="109.0" layoutX="186.0" layoutY="151.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../lawn_mower.gif" />
+            </image>
+        </ImageView>
+        <ImageView fitHeight="104.0" fitWidth="109.0" layoutX="172.0" layoutY="285.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../lawn_mower.gif" />
+            </image>
+        </ImageView>
+        <ImageView fitHeight="104.0" fitWidth="109.0" layoutX="167.0" layoutY="398.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../lawn_mower.gif" />
+            </image>
+        </ImageView>
+        <ImageView fitHeight="104.0" fitWidth="109.0" layoutX="160.0" layoutY="521.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../lawn_mower.gif" />
+            </image>
+        </ImageView>
+        <ImageView fitHeight="84.0" fitWidth="69.0" layoutX="13.0" layoutY="547.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../sun.gif" />
+            </image>
+        </ImageView>
+        <ImageView fitHeight="34.0" fitWidth="77.0" layoutX="8.0" layoutY="617.0" pickOnBounds="true">
+            <image>
+                <Image url="@../Counter.png" />
+            </image>
+        </ImageView>
+    </children>
+</AnchorPane>
