@@ -82,14 +82,14 @@
           <RowConstraints maxHeight="106.0" minHeight="10.0" prefHeight="97.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <ImageView fitHeight="34.0" fitWidth="77.0" pickOnBounds="true">
+            <ImageView fitHeight="95.0" fitWidth="81.0" pickOnBounds="true">
                <image>
-                  <Image url="@../Counter.png" />
+                  <Image url="@../tiles/37.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="34.0" fitWidth="77.0" pickOnBounds="true" GridPane.columnIndex="1">
+            <ImageView fitHeight="97.0" fitWidth="77.0" pickOnBounds="true" GridPane.columnIndex="1">
                <image>
-                  <Image url="@../Counter.png" />
+                  <Image url="@../tiles/38.png" />
                </image>
             </ImageView>
             <ImageView fitHeight="103.0" fitWidth="82.0" pickOnBounds="true" GridPane.rowIndex="4">
@@ -134,7 +134,7 @@
             </ImageView>
             <ImageView fitHeight="97.0" fitWidth="97.0" pickOnBounds="true" GridPane.columnIndex="6" GridPane.rowIndex="3">
                <image>
-                  <Image url="@../Counter.png" />
+                  <Image url="@../tiles/16.png" />
                </image>
             </ImageView>
             <ImageView fitHeight="98.0" fitWidth="97.0" pickOnBounds="true" GridPane.columnIndex="8" GridPane.rowIndex="4">
@@ -144,70 +144,170 @@
             </ImageView>
             <ImageView fitHeight="97.0" fitWidth="77.0" pickOnBounds="true" GridPane.rowIndex="3">
                <image>
-                  <Image url="@../Counter.png" />
+                  <Image url="@../tiles/10.png" />
                </image>
             </ImageView>
             <ImageView fitHeight="98.0" fitWidth="77.0" pickOnBounds="true" GridPane.columnIndex="1" GridPane.rowIndex="3">
                <image>
-                  <Image url="@../Counter.png" />
+                  <Image url="@../tiles/11.png" />
                </image>
             </ImageView>
             <ImageView fitHeight="98.0" fitWidth="112.0" pickOnBounds="true" GridPane.columnIndex="2" GridPane.rowIndex="3">
                <image>
-                  <Image url="@../Counter.png" />
+                  <Image url="@../tiles/12.png" />
                </image>
             </ImageView>
             <ImageView fitHeight="98.0" fitWidth="85.0" pickOnBounds="true" GridPane.columnIndex="3" GridPane.rowIndex="3">
                <image>
-                  <Image url="@../Counter.png" />
+                  <Image url="@../tiles/13.png" />
                </image>
             </ImageView>
             <ImageView fitHeight="97.0" fitWidth="96.0" pickOnBounds="true" GridPane.columnIndex="8" GridPane.rowIndex="3">
                <image>
-                  <Image url="@../Counter.png" />
+                  <Image url="@../tiles/18.png" />
                </image>
             </ImageView>
             <ImageView fitHeight="96.0" fitWidth="84.0" pickOnBounds="true" GridPane.columnIndex="4" GridPane.rowIndex="3">
                <image>
-                  <Image url="@../Counter.png" />
+                  <Image url="@../tiles/14.png" />
                </image>
             </ImageView>
             <ImageView fitHeight="98.0" fitWidth="102.0" pickOnBounds="true" GridPane.columnIndex="5" GridPane.rowIndex="3">
                <image>
-                  <Image url="@../Counter.png" />
+                  <Image url="@../tiles/15.png" />
                </image>
             </ImageView>
             <ImageView fitHeight="99.0" fitWidth="88.0" pickOnBounds="true" GridPane.columnIndex="7" GridPane.rowIndex="3">
                <image>
-                  <Image url="@../Counter.png" />
+                  <Image url="@../tiles/17.png" />
                </image>
             </ImageView>
             <ImageView fitHeight="98.0" fitWidth="77.0" pickOnBounds="true" GridPane.rowIndex="2">
                <image>
-                  <Image url="@../Counter.png" />
+                  <Image url="@../tiles/19.png" />
                </image>
             </ImageView>
             <ImageView fitHeight="103.0" fitWidth="77.0" pickOnBounds="true" GridPane.columnIndex="1" GridPane.rowIndex="2">
                <image>
-                  <Image url="@../Counter.png" />
+                  <Image url="@../tiles/20.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="110.0" fitWidth="77.0" pickOnBounds="true" GridPane.columnIndex="2" GridPane.rowIndex="2">
+            <ImageView fitHeight="110.0" fitWidth="112.0" pickOnBounds="true" GridPane.columnIndex="2" GridPane.rowIndex="2">
                <image>
-                  <Image url="@../Counter.png" />
+                  <Image url="@../tiles/21.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="110.0" fitWidth="86.0" pickOnBounds="true" GridPane.columnIndex="3" GridPane.rowIndex="2">
+               <image>
+                  <Image url="@../tiles/22.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="110.0" fitWidth="83.0" pickOnBounds="true" GridPane.columnIndex="4" GridPane.rowIndex="2">
+               <image>
+                  <Image url="@../tiles/23.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="110.0" fitWidth="102.0" pickOnBounds="true" GridPane.columnIndex="5" GridPane.rowIndex="2">
+               <image>
+                  <Image url="@../tiles/24.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="110.0" fitWidth="97.0" pickOnBounds="true" GridPane.columnIndex="6" GridPane.rowIndex="2">
+               <image>
+                  <Image url="@../tiles/25.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="110.0" fitWidth="87.0" pickOnBounds="true" GridPane.columnIndex="7" GridPane.rowIndex="2">
+               <image>
+                  <Image url="@../tiles/26.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="110.0" fitWidth="94.0" pickOnBounds="true" GridPane.columnIndex="8" GridPane.rowIndex="2">
+               <image>
+                  <Image url="@../tiles/27.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="93.0" fitWidth="77.0" pickOnBounds="true" GridPane.rowIndex="1">
+               <image>
+                  <Image url="@../tiles/28.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="93.0" fitWidth="77.0" pickOnBounds="true" GridPane.columnIndex="1" GridPane.rowIndex="1">
+               <image>
+                  <Image url="@../tiles/29.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="93.0" fitWidth="109.0" pickOnBounds="true" GridPane.columnIndex="2" GridPane.rowIndex="1">
+               <image>
+                  <Image url="@../tiles/30.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="93.0" fitWidth="85.0" pickOnBounds="true" GridPane.columnIndex="3" GridPane.rowIndex="1">
+               <image>
+                  <Image url="@../tiles/31.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="93.0" fitWidth="83.0" pickOnBounds="true" GridPane.columnIndex="4" GridPane.rowIndex="1">
+               <image>
+                  <Image url="@../tiles/32.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="93.0" fitWidth="102.0" pickOnBounds="true" GridPane.columnIndex="5" GridPane.rowIndex="1">
+               <image>
+                  <Image url="@../tiles/33.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="93.0" fitWidth="98.0" pickOnBounds="true" GridPane.columnIndex="6" GridPane.rowIndex="1">
+               <image>
+                  <Image url="@../tiles/34.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="93.0" fitWidth="86.0" pickOnBounds="true" GridPane.columnIndex="7" GridPane.rowIndex="1">
+               <image>
+                  <Image url="@../tiles/35.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="93.0" fitWidth="95.0" pickOnBounds="true" GridPane.columnIndex="8" GridPane.rowIndex="1">
+               <image>
+                  <Image url="@../tiles/36.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="93.0" fitWidth="109.0" pickOnBounds="true" GridPane.columnIndex="2">
+               <image>
+                  <Image url="@../tiles/39.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="93.0" fitWidth="85.0" pickOnBounds="true" GridPane.columnIndex="3">
+               <image>
+                  <Image url="@../tiles/40.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="93.0" fitWidth="84.0" pickOnBounds="true" GridPane.columnIndex="4">
+               <image>
+                  <Image url="@../tiles/41.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="93.0" fitWidth="103.0" pickOnBounds="true" GridPane.columnIndex="5">
+               <image>
+                  <Image url="@../tiles/42.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="93.0" fitWidth="95.0" pickOnBounds="true" GridPane.columnIndex="6">
+               <image>
+                  <Image url="@../tiles/43.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="93.0" fitWidth="87.0" pickOnBounds="true" GridPane.columnIndex="7">
+               <image>
+                  <Image url="@../tiles/44.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="93.0" fitWidth="94.0" pickOnBounds="true" GridPane.columnIndex="8">
+               <image>
+                  <Image url="@../tiles/45.png" />
                </image>
             </ImageView>
          </children>
       </GridPane>
-      <ImageView fitHeight="110.0" fitWidth="77.0" layoutX="102.0" layoutY="284.0" pickOnBounds="true">
-         <image>
-            <Image url="@../Counter.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="110.0" fitWidth="77.0" layoutX="112.0" layoutY="294.0" pickOnBounds="true">
-         <image>
-            <Image url="@../Counter.png" />
-         </image>
-      </ImageView>
     </children>
 </AnchorPane>
