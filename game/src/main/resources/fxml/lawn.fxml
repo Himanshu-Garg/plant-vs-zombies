@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.paint.*?>
+<?import java.lang.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
 <?import javafx.scene.effect.Light.Distant?>
 <?import javafx.scene.effect.Lighting?>
 <?import javafx.scene.effect.Shadow?>
@@ -9,8 +15,9 @@
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.shape.Rectangle?>
 
-<AnchorPane prefHeight="659.0" prefWidth="1129.0" xmlns="http://javafx.com/javafx/8.0.231" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.lawn_controller">
+<AnchorPane prefHeight="659.0" prefWidth="1129.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.lawn_controller">
     <children>
         <ImageView fitHeight="659.0" fitWidth="1130.0" pickOnBounds="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <image>
@@ -40,26 +47,6 @@
         <ImageView fitHeight="104.0" fitWidth="109.0" layoutX="102.0" layoutY="475.0" pickOnBounds="true" preserveRatio="true">
             <image>
                 <Image url="@../lawn_mower.gif" />
-            </image>
-        </ImageView>
-        <ImageView fitHeight="60.0" fitWidth="57.0" layoutX="22.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
-            <image>
-                <Image url="@../sun.gif" />
-            </image>
-         <effect>
-            <Lighting diffuseConstant="1.61" specularConstant="1.65" specularExponent="35.62" surfaceScale="6.92">
-               <bumpInput>
-                  <Shadow />
-               </bumpInput>
-               <light>
-                  <Light.Distant color="#d9c1bf" />
-               </light>
-            </Lighting>
-         </effect>
-        </ImageView>
-        <ImageView fitHeight="34.0" fitWidth="77.0" layoutX="13.0" layoutY="61.0" pickOnBounds="true">
-            <image>
-                <Image url="@../Counter.png" />
             </image>
         </ImageView>
       <GridPane layoutX="215.0" layoutY="79.0" prefHeight="506.0" prefWidth="828.0">
@@ -307,7 +294,78 @@
                   <Image url="@../tiles/45.png" />
                </image>
             </ImageView>
+             <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+             <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+             <ImageView fitHeight="87.0" fitWidth="69.0" layoutX="295.0" layoutY="153.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="1">
+                 <image>
+                     <Image url="@../sun_flower.gif" />
+                 </image>
+             </ImageView>
+            <ImageView fitHeight="84.0" fitWidth="81.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="1">
+               <image>
+                  <Image url="@../walnut_full_life.gif" />
+               </image>
+            </ImageView>
          </children>
       </GridPane>
+       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#2a598503" height="50.0" layoutX="638.0" layoutY="7.0" stroke="#56569a" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeType="INSIDE" strokeWidth="20.0" width="303.0" />
+       <Rectangle arcHeight="5.0" arcWidth="5.0" height="34.0" layoutX="644.0" layoutY="16.0" stroke="BLACK" strokeType="INSIDE" width="288.0" />
+       <Rectangle arcHeight="5.0" arcWidth="5.0" height="34.0" layoutX="789.0" layoutY="16.0" stroke="#ada31700" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeType="INSIDE" strokeWidth="0.0" width="144.0">
+         <fill>
+            <LinearGradient endX="0.5194174757281553" endY="0.10679611650485438" startX="0.5097087378640777" startY="1.0">
+               <stops>
+                  <Stop color="#85c263" />
+                  <Stop color="#c2d05b" offset="1.0" />
+               </stops>
+            </LinearGradient>
+         </fill></Rectangle>
+       <ImageView fitHeight="57.0" fitWidth="58.0" layoutX="745.0" layoutY="-6.0" pickOnBounds="true" preserveRatio="true">
+           <image>
+               <Image url="@../head.png" />
+           </image>
+       </ImageView>
+       <ImageView fitHeight="50.0" fitWidth="56.0" layoutX="642.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
+           <image>
+               <Image url="@../brainflag.png" />
+           </image>
+       </ImageView>
+       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#720e0b" height="50.0" layoutX="303.0" layoutY="7.0" stroke="#7c513a" strokeType="INSIDE" strokeWidth="5.0" width="119.0" />
+       <ImageView fitHeight="83.0" fitWidth="77.0" layoutX="328.0" layoutY="-13.0" pickOnBounds="true" preserveRatio="true" rotate="36.0">
+           <image>
+               <Image url="@../shovel.png" />
+           </image>
+       </ImageView>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#720e0b" height="50.0" layoutX="131.0" layoutY="7.0" stroke="BLACK" strokeType="INSIDE" width="164.0" />
+        <ImageView fitHeight="57.0" fitWidth="69.0" layoutX="129.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../brightsun.png" />
+            </image>
+        </ImageView>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#fffa92" height="42.0" layoutX="186.0" layoutY="11.0" stroke="#00000002" strokeType="INSIDE" width="102.0" />
+      <ImageView fitHeight="64.0" fitWidth="175.0" layoutX="953.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../menu.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="57.0" fitWidth="102.0" layoutX="9.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../suncost.PNG" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="57.0" fitWidth="102.0" layoutX="9.0" layoutY="143.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../wallnutcost.PNG" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="57.0" fitWidth="102.0" layoutX="9.0" layoutY="75.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../peacost.PNG" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="57.0" fitWidth="102.0" layoutX="9.0" layoutY="218.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../cherrycost.PNG" />
+         </image>
+      </ImageView>
     </children>
 </AnchorPane>
