@@ -2,6 +2,7 @@ package sample;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.LoadException;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.effect.BoxBlur;
@@ -27,14 +28,28 @@ public class lawn_controller {
         BoxBlur blur = new BoxBlur(5,5,5);
         root_AnchorPane.setEffect(blur);
 
+        // add the function to stop all the threads here.......
+        //
+        //
+        //
+        //
+
+
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("/fxml/in_game_menu.fxml"));
+        loader.load();
+
+        // to set lawn_window in in_game_menu_controller
+        in_game_menu_controller in_game_menu = loader.getController();
+        in_game_menu.setLawn_window((Stage) root_AnchorPane.getScene().getWindow());
+
+
+        // to create the scene and make it transparent  .... and also creating the stage
+        Scene menu_scene = new Scene(loader.getRoot());
         Stage window = new Stage();
         window.initModality(Modality.APPLICATION_MODAL);
         window.setTitle("IN-GAME Options");
 
-        Parent menu_parent = FXMLLoader.load(getClass().getResource("/fxml/in_game_menu.fxml"));
-        Scene menu_scene = new Scene(menu_parent);
-
-        // to make the scene transparent
         menu_scene.setFill(Color.TRANSPARENT);
 
         // setting scene to window and displaying window...
@@ -43,8 +58,8 @@ public class lawn_controller {
 
         // to hide the above cross/minimize option...
         window.initStyle(StageStyle.TRANSPARENT);
-
         window.showAndWait();
+
 
 
     }
