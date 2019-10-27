@@ -335,7 +335,7 @@
             </image>
         </ImageView>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#fffa92" height="42.0" layoutX="186.0" layoutY="11.0" stroke="#00000002" strokeType="INSIDE" width="102.0" />
-      <ImageView fitHeight="64.0" fitWidth="175.0" layoutX="953.0" layoutY="7.0" onMouseClicked="#menu_clicked" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="menu" fitHeight="64.0" fitWidth="175.0" layoutX="953.0" layoutY="7.0" onMouseClicked="#menu_clicked" onMouseEntered="#menu_entered" onMouseExited="#menu_exited" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../menu.jpg" />
          </image>
