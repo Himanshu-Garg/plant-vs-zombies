@@ -7,6 +7,7 @@ import javafx.scene.control.Button;
 import javafx.scene.*;
 import javafx.scene.control.*;
 import javafx.event.*;
+import javafx.scene.effect.Glow;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -17,25 +18,42 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
+import java.io.IOException;
 
 public class welcome_controller {
 
-    @FXML
-    private Button new_game_button;
+    // self-defined functions
+
+    private void glow_image(ImageView i){
+        Glow glow = new Glow();
+        glow.setLevel(1.0);
+        i.setEffect(glow);
+    }
+
+    private void unglow_image(ImageView i){
+        Glow glow = new Glow();
+        glow.setLevel(0.3);
+        i.setEffect(glow);
+    }
+
+    // self-defined functions ends here ------
 
     @FXML
-    private Button load_button;
+    private ImageView new_game_image;
 
     @FXML
-    private Button exit_button;
+    private ImageView load_game_image;
 
     @FXML
-    void exit_clicked(ActionEvent event) {
+    private ImageView exit_image;
+
+    @FXML
+    void clicked_exit_game(MouseEvent event) {
         System.exit(0);
     }
 
     @FXML
-    void load_game_clicked(ActionEvent event) {
+    void clicked_load_game(MouseEvent event) {
 
     }
 
@@ -44,7 +62,8 @@ public class welcome_controller {
      * i.e when this function will run, scene will be changed.
      * **/
     @FXML
-    void new_game_clicked(ActionEvent event) throws Exception{
+    void clicked_new_game(MouseEvent event) throws IOException {
+
         Pane lawn_parent = FXMLLoader.load(getClass().getResource("/fxml/lawn.fxml"));
         Scene lawn_scene = new Scene(lawn_parent);
 
@@ -106,4 +125,35 @@ public class welcome_controller {
 
     }
 
+    @FXML
+    void mouse_entered_exit(MouseEvent event) {
+        glow_image(exit_image);
+    }
+
+    @FXML
+    void mouse_entered_load_game(MouseEvent event) {
+        glow_image(load_game_image);
+    }
+
+    @FXML
+    void mouse_entered_new_game(MouseEvent event) {
+        glow_image(new_game_image);
+    }
+
+    @FXML
+    void mouse_exited_exit(MouseEvent event) {
+        unglow_image(exit_image);
+    }
+
+    @FXML
+    void mouse_exited_load_game(MouseEvent event) {
+        unglow_image(load_game_image);
+    }
+
+    @FXML
+    void mouse_exited_new_game(MouseEvent event) {
+        unglow_image(new_game_image);
+    }
+
 }
+
