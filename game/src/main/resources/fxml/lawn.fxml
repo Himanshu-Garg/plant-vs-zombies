@@ -1,23 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.paint.*?>
-<?import java.lang.*?>
-<?import javafx.scene.effect.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.shape.*?>
-<?import javafx.scene.effect.Light.Distant?>
-<?import javafx.scene.effect.Lighting?>
-<?import javafx.scene.effect.Shadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
 <?import javafx.scene.shape.Rectangle?>
 
-<AnchorPane prefHeight="659.0" prefWidth="1129.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.lawn_controller">
+<AnchorPane fx:id="root_AnchorPane" prefHeight="659.0" prefWidth="1129.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.lawn_controller">
     <children>
         <ImageView fitHeight="659.0" fitWidth="1130.0" pickOnBounds="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <image>
@@ -342,7 +335,7 @@
             </image>
         </ImageView>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#fffa92" height="42.0" layoutX="186.0" layoutY="11.0" stroke="#00000002" strokeType="INSIDE" width="102.0" />
-      <ImageView fitHeight="64.0" fitWidth="175.0" layoutX="953.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="64.0" fitWidth="175.0" layoutX="953.0" layoutY="7.0" onMouseClicked="#menu_clicked" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../menu.jpg" />
          </image>
