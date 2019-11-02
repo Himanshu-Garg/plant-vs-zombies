@@ -26,6 +26,9 @@ public class lawn_controller {
     private ImageView menu;
 
     @FXML
+    private ImageView tile1;
+
+    @FXML
     void menu_clicked(MouseEvent event) throws IOException {
         System.out.println("Menu button clicked...");
 
