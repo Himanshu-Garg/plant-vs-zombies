@@ -37,6 +37,14 @@
             <Glow />
          </effect>
         </ImageView>
+      <ImageView fx:id="choose_level_image" accessibleRole="BUTTON" fitHeight="72.0" fitWidth="315.0" layoutX="413.0" layoutY="427.0" onMouseClicked="#clicked_choose_level" onMouseEntered="#mouse_entered_choose_level" onMouseExited="#mouse_exited_choose_level" pickOnBounds="true">
+         <image>
+            <Image url="@../choose%20level.png" />
+         </image>
+         <effect>
+            <Glow />
+         </effect>
+      </ImageView>
     </children>
 
 </AnchorPane>

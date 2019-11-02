@@ -47,6 +47,9 @@ public class welcome_controller {
     private ImageView new_game_image;
 
     @FXML
+    private ImageView choose_level_image;
+
+    @FXML
     private ImageView load_game_image;
 
     @FXML
@@ -59,6 +62,11 @@ public class welcome_controller {
 
     @FXML
     void clicked_load_game(MouseEvent event) {
+
+    }
+
+    @FXML
+    void clicked_choose_level(MouseEvent event) {
 
     }
 
@@ -411,9 +419,10 @@ public class welcome_controller {
     }
 
     @FXML
-    void mouse_entered_new_game(MouseEvent event) {
-        glow_image(new_game_image);
-    }
+    void mouse_entered_new_game(MouseEvent event) { glow_image(new_game_image); }
+
+    @FXML
+    void mouse_entered_choose_level(MouseEvent event) { glow_image(choose_level_image); }
 
     @FXML
     void mouse_exited_exit(MouseEvent event) {
@@ -428,6 +437,11 @@ public class welcome_controller {
     @FXML
     void mouse_exited_new_game(MouseEvent event) {
         unglow_image(new_game_image);
+    }
+
+    @FXML
+    void mouse_exited_choose_level(MouseEvent event) {
+        unglow_image(choose_level_image);
     }
 }
 
