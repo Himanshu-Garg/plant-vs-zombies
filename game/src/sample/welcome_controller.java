@@ -109,7 +109,7 @@ public class welcome_controller {
         normzombie.setLayoutX(1139); normzombie.setLayoutY(239); normzombie.setFitHeight(138); normzombie.setFitWidth(100);
 
         ImageView pea=new ImageView(new Image(getClass().getResourceAsStream("../main/resources/pea.png")));
-        pea.setVisible(false); pea.setX(344); pea.setY(307); pea.setFitHeight(34); pea.setFitWidth(31);
+        pea.setVisible(false); pea.setX(344); pea.setY(290); pea.setFitHeight(34); pea.setFitWidth(31);
 
         TranslateTransition tt2=new TranslateTransition();
         tt2.setDuration(Duration.seconds(15));
@@ -389,6 +389,16 @@ public class welcome_controller {
             }
         });
 
+        ImageView zombiehead =new ImageView(new Image(getClass().getResourceAsStream("../main/resources/head.png")));
+        zombiehead.setLayoutX(882);zombiehead.setLayoutY(-6);zombiehead.setFitHeight(57);zombiehead.setFitWidth(58);
+
+        TranslateTransition tt3=new TranslateTransition();
+        tt3.setNode(zombiehead);
+        tt3.setDuration(Duration.seconds(30));
+        tt3.setToX(-82);
+        tt3.play();
+
+        lawn_parent.getChildren().add(zombiehead);
         lawn_parent.getChildren().add(tile8);
         lawn_parent.getChildren().add(tile1);
         lawn_parent.getChildren().add(pea);

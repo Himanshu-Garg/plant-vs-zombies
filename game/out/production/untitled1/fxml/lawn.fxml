@@ -297,7 +297,7 @@
       </GridPane>
        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#2a598503" height="50.0" layoutX="638.0" layoutY="7.0" stroke="#56569a" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeType="INSIDE" strokeWidth="20.0" width="303.0" />
        <Rectangle arcHeight="5.0" arcWidth="5.0" height="34.0" layoutX="644.0" layoutY="16.0" stroke="BLACK" strokeType="INSIDE" width="288.0" />
-       <Rectangle arcHeight="5.0" arcWidth="5.0" height="34.0" layoutX="789.0" layoutY="16.0" stroke="#ada31700" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeType="INSIDE" strokeWidth="0.0" width="144.0">
+       <Rectangle arcHeight="5.0" arcWidth="5.0" height="34.0" layoutX="789.0" layoutY="16.0" stroke="#ada31700" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeType="INSIDE" strokeWidth="0.0" visible="false" width="144.0">
          <fill>
             <LinearGradient endX="0.5194174757281553" endY="0.10679611650485438" startX="0.5097087378640777" startY="1.0">
                <stops>
@@ -306,11 +306,6 @@
                </stops>
             </LinearGradient>
          </fill></Rectangle>
-       <ImageView fitHeight="57.0" fitWidth="58.0" layoutX="745.0" layoutY="-6.0" pickOnBounds="true" preserveRatio="true">
-           <image>
-               <Image url="@../head.png" />
-           </image>
-       </ImageView>
        <ImageView fitHeight="50.0" fitWidth="56.0" layoutX="642.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
            <image>
                <Image url="@../brainflag.png" />
