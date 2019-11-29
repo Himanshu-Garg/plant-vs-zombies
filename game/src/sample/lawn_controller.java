@@ -203,26 +203,30 @@ public class lawn_controller /*implements Initializable*/ {
             i.setOnDragDropped(new EventHandler<DragEvent>() {
                 @Override
                 public void handle(DragEvent event) {
-                    String image_url = "../main/resources/sun_flower.gif"; // for demo, creating always sunflower image
-                    System.out.println("droppend detected at tile - " + i);
+                    String image_url = ""; // for demo, creating always sunflower image
+                    System.out.println("dropped detected at tile - " + i);
 
                     // i.e can only place the plant if there was not any before
                     if(i.getImage()==blank ) {
 
                         // creating object of the selected plant object
                         if(selected_buying_plant==0) {
+                            image_url = "../main/resources/sun_flower.gif";
                             // create object of sunflower type and
                             // set image url = object.url;
                             // and add that in the array of the player
                         }
                         else if (selected_buying_plant==1) {
+                            image_url = "../main/resources/pea_shooter.gif";
                             // create object of pea-shooter type and
                             // set image url = object.url;
                         }
                         else if (selected_buying_plant==2) {
+                            image_url = "../main/resources/walnut_full_life.gif";
                             //
                         }
                         else if (selected_buying_plant==3) {
+                            image_url = "../main/resources/CHERRYBOMB.png";
                             //
                         }
 
@@ -330,13 +334,18 @@ public class lawn_controller /*implements Initializable*/ {
     void setLawn_parent(Pane l) {
         this.lawn_parent = l;
         System.out.println(lawn_parent==null);
+
         // now running the initialized functions...
-        display_buying_tiles(1);
+        int level = 2;
+        display_buying_tiles(level);
         set_all_tiles();
 
-        for(ImageView i: buying_tiles) {
-            lawn_parent.getChildren().add(i);
+        for(int i=0;i<=level;i++) {
+            if(i<buying_tiles.size()) {
+                lawn_parent.getChildren().add(buying_tiles.get(i));
+            }
         }
+
         for(ImageView i: all_tiles) {
             lawn_parent.getChildren().add(i);
         }
