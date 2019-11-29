@@ -97,6 +97,8 @@ public class welcome_controller {
 
         lawn_controller lc = loader.getController();
         lc.setLawn_parent(lawn_parent);
+        lc.set_level(level1);
+        lc.set_player(player);
 
 
 //        ImageView pea=new ImageView(new Image(getClass().getResourceAsStream("../main/resources/pea.png")));

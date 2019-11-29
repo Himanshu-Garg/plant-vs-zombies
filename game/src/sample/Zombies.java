@@ -57,6 +57,10 @@ public class Zombies extends Character {
         tt2.play();
         lawn_parent.getChildren().add(zombie_image);
     }
+
+    public ImageView getZombie_image() {
+        return zombie_image;
+    }
 }
 
 

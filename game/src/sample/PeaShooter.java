@@ -2,6 +2,7 @@ package sample;
 
 import javafx.animation.TranslateTransition;
 import javafx.application.Platform;
+import javafx.event.Event;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
@@ -11,13 +12,27 @@ import java.util.concurrent.TimeUnit;
 
 public class PeaShooter extends Plants{
 
-    ImageView peashooter;
+    ImageView img;
     Pane lawn_parent;
+
+    public Pea getPea() {
+        return pea;
+    }
+
+    Pea pea;
     boolean shoot;
-    PeaShooter(Pane pl) {
+    PeaShooter(Pane pl,ImageView img) {
         shoot=false;
         lawn_parent=pl;
-        peashooter=new ImageView(new Image(getClass().getResourceAsStream("../main/resources/pea_shooter.gif")));
+        this.img=img;
+    }
+
+    public double getpeaposx() {
+        return img.getLayoutX()+58;
+    }
+
+    public double getpeaposy() {
+        return img.getLayoutY()+10;
     }
 
     public void setShoot(boolean shoot) {
@@ -43,6 +58,9 @@ public class PeaShooter extends Plants{
                 }
             }
         });
+
+        Event x=new Event();
+
         t.setDaemon(true);
         t.start();
     }

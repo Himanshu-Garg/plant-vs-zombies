@@ -9,6 +9,7 @@ public class Plants {
     protected int time_to_buy;
     protected int time_to_attack;
     protected List<Zombies> zombies_on_field;
+    protected int tile_no;
 
     public String getDescription() {
         return description;

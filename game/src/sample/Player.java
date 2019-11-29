@@ -18,4 +18,11 @@ public class Player {
         level.update_no_of_suns(no_of_suns);
     }
 
+    public void plant_purchased(int x) {
+        sun_collected(-x);
+    }
+
+    public int getNo_of_suns() {
+        return no_of_suns;
+    }
 }

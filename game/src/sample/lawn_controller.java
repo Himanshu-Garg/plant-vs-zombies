@@ -31,6 +31,7 @@ import java.util.concurrent.TimeUnit;
 public class lawn_controller /*implements Initializable*/ {
 
     Pane lawn_parent;
+    Player player;
 
     // experimenting
 
@@ -95,7 +96,7 @@ public class lawn_controller /*implements Initializable*/ {
             present_tile.setOnDragDetected(new EventHandler<MouseEvent>() {
                 @Override
                 public void handle(MouseEvent event) {
-                    System.out.println("drag detected on a buying-tile no. - " + finalI);
+                    //System.out.println("drag detected on a buying-tile no. - " + finalI);
 
                     // setting selected_buying_plant
                     selected_buying_plant = finalI;
@@ -207,7 +208,7 @@ public class lawn_controller /*implements Initializable*/ {
                     System.out.println("dropped detected at tile - " + i);
 
                     // i.e can only place the plant if there was not any before
-                    if(i.getImage()==blank ) {
+                    if(i.getImage()==blank && sun_above_cost(selected_buying_plant,player.getNo_of_suns())) {
 
                         // creating object of the selected plant object
                         if(selected_buying_plant==0) {
@@ -254,31 +255,28 @@ public class lawn_controller /*implements Initializable*/ {
                                 buying_tiles.get(selected_buying_plant).setDisable(false);
                             }
                         }).start();
-
+                        plant_placed(selected_buying_plant,i);
                         event.setDropCompleted(true);
                         event.consume();
+
                     }
                 }
             });
         }
     }
 
-    // initialization block  --- > run whenever fxml is loaded...
-//    @Override
-//    public void initialize(URL location, ResourceBundle resources) {
-//
-//        System.out.println("lawn-controller initialized...");
-//        display_buying_tiles(1);
-//        set_all_tiles();
-//
-//
-//    }
 
     @FXML
     private AnchorPane root_AnchorPane;
 
     @FXML
     private ImageView menu;
+
+    public boolean sun_above_cost(int x, int s) {
+        if((x==0 && s<50) || (x==1 && s<100) || (x==2 && s<50) || (x==3 && s<150))
+            return false;
+        return true;
+    }
 
     @FXML
     void menu_clicked(MouseEvent event) throws IOException {
@@ -371,10 +369,13 @@ public class lawn_controller /*implements Initializable*/ {
         level=lev;
     }
 
-    public void plant_placed(PeaShooter p) {
-        level.place_plant(p);
+    public void plant_placed(int x, ImageView i) {
+        level.place_plant(x,i);
     }
 
-    // self-defined functions ends here ------
+    public void set_player(Player player) {
+        this.player = player;
+    }
+// self-defined functions ends here ------
 
 }
