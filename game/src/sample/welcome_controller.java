@@ -19,6 +19,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
@@ -66,8 +67,12 @@ public class welcome_controller {
     }
 
     @FXML
-    void clicked_choose_level(MouseEvent event) {
-
+    void clicked_choose_level(MouseEvent event) throws IOException {
+        Pane level_parent = FXMLLoader.load(getClass().getResource("/fxml/choose_level_screen.fxml"));
+        Scene level_scene=new Scene(level_parent);
+        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+        window.setScene(level_scene);
+        window.show();
     }
 
     /**
@@ -77,29 +82,37 @@ public class welcome_controller {
     @FXML
     void clicked_new_game(MouseEvent event) throws IOException {
 
-        Pane lawn_parent = FXMLLoader.load(getClass().getResource("/fxml/lawn.fxml"));
+        FXMLLoader loader=new FXMLLoader();
+        loader.setLocation(getClass().getResource("/fxml/choose_level_screen.fxml"));
+        loader.load();
+        Pane lawn_parent = loader.load(getClass().getResource("/fxml/lawn.fxml"));
         Scene lawn_scene = new Scene(lawn_parent);
+        Player player=new Player();
+        Level level1=new Level1(player,lawn_parent);
+        level_controller lc=loader.getController();
+        lc.set_level(level1);
+        level1.start_level();
 
         Text no_of_suns=new Text(220,42,"50");
         no_of_suns.setFont(Font.font("Verdana", FontWeight.BOLD,30));
 
-        ImageView falling_sun=new ImageView(new Image(getClass().getResourceAsStream("../main/resources/brightsun.png")));
-        falling_sun.setX(665); falling_sun.setY(-50); falling_sun.setFitWidth(60); falling_sun.setFitHeight(60);
+//        ImageView falling_sun=new ImageView(new Image(getClass().getResourceAsStream("../main/resources/brightsun.png")));
+//        falling_sun.setX(665); falling_sun.setY(-50); falling_sun.setFitWidth(60); falling_sun.setFitHeight(60);
+//
+//        TranslateTransition tt=new TranslateTransition();
+//        tt.setDuration(Duration.seconds(8));
+//        tt.setNode(falling_sun);
+//        tt.setToY(641);
+//        tt.play();
+//
+//        falling_sun.addEventHandler(MouseEvent.MOUSE_CLICKED, event1 -> {
+//            String k=no_of_suns.getText();
+//            no_of_suns.setText(Integer.toString(25+Integer.parseInt(k)));
+//            lawn_parent.getChildren().remove(falling_sun);
+//            /*falling_sun.setVisible(false);*/
+//        });
 
-        TranslateTransition tt=new TranslateTransition();
-        tt.setDuration(Duration.seconds(8));
-        tt.setNode(falling_sun);
-        tt.setToY(641);
-        tt.play();
-
-        falling_sun.addEventHandler(MouseEvent.MOUSE_CLICKED, event1 -> {
-            String k=no_of_suns.getText();
-            no_of_suns.setText(Integer.toString(25+Integer.parseInt(k)));
-            lawn_parent.getChildren().remove(falling_sun);
-            /*falling_sun.setVisible(false);*/
-        });
-
-        lawn_parent.getChildren().add(falling_sun);
+//        lawn_parent.getChildren().add(falling_sun);
         lawn_parent.getChildren().add(no_of_suns);
 
         /*ImageView peaplant =new ImageView(new Image(getClass().getResourceAsStream("../main/resources/pea_shooter.gif")));
@@ -117,12 +130,6 @@ public class welcome_controller {
         tt2.setToX(-659);
         tt2.play();
 
-        /*TranslateTransition tt1=new TranslateTransition();
-        pea.setVisible(true);
-        tt1.setDuration(Duration.seconds(2.8));
-        tt1.setNode(pea);
-        tt1.setToX(1200);
-        tt1.play();*/
 
         new Thread(new Runnable() {
             @Override

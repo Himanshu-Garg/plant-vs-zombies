@@ -108,11 +108,7 @@ public class in_game_menu_controller {
     void setLawn_window(Stage l) {
         lawn_window = l;
     }
-
     // self-defined functions ends here ------
-
-
-
 }
 
 

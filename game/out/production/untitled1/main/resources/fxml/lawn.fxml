@@ -349,16 +349,6 @@
             <Image url="@../cherrycost.PNG" />
          </image>
       </ImageView>
-       <ImageView fitHeight="87.0" fitWidth="69.0" layoutX="-127.0" layoutY="200.0" pickOnBounds="true" preserveRatio="true">
-           <image>
-               <Image url="@../sun_flower.gif" />
-           </image>
-       </ImageView>
-      <ImageView fitHeight="84.0" fitWidth="81.0" layoutX="-120.0" layoutY="308.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../walnut_full_life.gif" />
-         </image>
-      </ImageView>
       <ImageView fitHeight="103.0" fitWidth="77.0" layoutX="297.0" layoutY="276.0" pickOnBounds="true">
          <image>
             <Image url="@../tiles/20.png" />
