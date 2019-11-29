@@ -21,21 +21,14 @@ public class level_controller implements Initializable {
     @FXML
     private MediaView media;
 
-    private Level level;
 
-    private List<Plants> list_of_plants=new ArrayList<Plants>();
 
-    public void set_level(Level lev) {
-        level=lev;
-    }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
     }
 
-    public void plant_placed(Plants p) {
-        level.place_plant(p);
-    }
+
     //all tiles drag drop
 }

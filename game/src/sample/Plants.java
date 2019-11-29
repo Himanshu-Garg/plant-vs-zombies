@@ -2,6 +2,7 @@ package sample;
 import java.util.List;
 
 public class Plants {
+
     public String description;
     protected int unlock_at_level;
     protected int sun_cost;
