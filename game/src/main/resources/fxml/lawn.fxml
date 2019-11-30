@@ -50,17 +50,13 @@
                     </stops>
                 </LinearGradient>
             </fill></Rectangle>
+
         <ImageView fitHeight="50.0" fitWidth="56.0" layoutX="642.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
             <image>
                 <Image url="@../brainflag.png" />
             </image>
         </ImageView>
-        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#720e0b" height="50.0" layoutX="303.0" layoutY="7.0" stroke="#7c513a" strokeType="INSIDE" strokeWidth="5.0" width="119.0" />
-        <ImageView fitHeight="83.0" fitWidth="77.0" layoutX="328.0" layoutY="-13.0" pickOnBounds="true" preserveRatio="true" rotate="36.0">
-            <image>
-                <Image url="@../shovel.png" />
-            </image>
-        </ImageView>
+
         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#720e0b" height="50.0" layoutX="131.0" layoutY="7.0" stroke="BLACK" strokeType="INSIDE" width="164.0" />
         <ImageView fitHeight="49.0" fitWidth="69.0" layoutX="137.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
             <image>

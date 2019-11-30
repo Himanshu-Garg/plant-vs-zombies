@@ -96,7 +96,7 @@ public class welcome_controller {
         player.set_level(level1);
 
         lawn_controller lc = loader.getController();
-        lc.setLawn_parent(lawn_parent);
+        lc.setLawn_parent(lawn_parent, 5);
         lc.set_level(level1);
         lc.set_player(player);
 

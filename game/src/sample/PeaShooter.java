@@ -59,7 +59,7 @@ public class PeaShooter extends Plants{
             }
         });
 
-        Event x=new Event();
+        //Event x=new Event();
 
         t.setDaemon(true);
         t.start();

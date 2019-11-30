@@ -16,6 +16,9 @@ import javafx.scene.input.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
+import javafx.scene.paint.Paint;
+import javafx.scene.shape.Rectangle;
+import javafx.scene.shape.StrokeType;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -28,10 +31,11 @@ import java.util.List;
 import java.util.ResourceBundle;
 import java.util.concurrent.TimeUnit;
 
-public class lawn_controller /*implements Initializable*/ {
+public class lawn_controller implements Initializable /*implements Initializable*/ {
 
     Pane lawn_parent;
     Player player;
+    Shovel shovel;
 
     // experimenting
 
@@ -40,6 +44,16 @@ public class lawn_controller /*implements Initializable*/ {
     Image blank = new Image(getClass().getResourceAsStream("../main/resources/tiles/3.png"));
 
     int selected_buying_plant;  // can be -> "0 = sf", "1 = ps", "2 = wn", "3 = cb"
+
+
+    private void add_shovel() {
+        shovel = new Shovel();
+        shovel.add_shovel_to_pane(lawn_parent);
+    }
+
+
+
+
 
     public void display_buying_tiles(int level) {
         // this function will display required buying tiles according to level no...
@@ -204,11 +218,38 @@ public class lawn_controller /*implements Initializable*/ {
             i.setOnDragDropped(new EventHandler<DragEvent>() {
                 @Override
                 public void handle(DragEvent event) {
+
+
                     String image_url = ""; // for demo, creating always sunflower image
                     System.out.println("dropped detected at tile - " + i);
 
+                    if(shovel!=null && shovel.shovel_activated ){
+                        if(i.getImage()!=blank) {
+                            System.out.println("Shovel removing the tile no - " + i);
+                            i.setImage(blank);
+                            i.setOpacity(0.3);
+                            shovel.shovel_activated = false;
+
+                            // here, add the code to remove the plant from the arraylist containing all the present plants
+                            // which is created by Udit
+                            // will be done by Udit
+                            //
+                            //
+                            //
+                            //
+                            // by ----> UDIT UDIT UDIT
+                            //
+
+                        }
+                        else {
+                            System.out.println("No plant at tile-no- " + i + " (so aborting shovel)");
+                        }
+
+                    }
+
+
                     // i.e can only place the plant if there was not any before
-                    if(i.getImage()==blank && sun_above_cost(selected_buying_plant,player.getNo_of_suns())) {
+                    else if(i.getImage()==blank && sun_above_cost(selected_buying_plant,player.getNo_of_suns())) {
 
                         // creating object of the selected plant object
                         if(selected_buying_plant==0) {
@@ -255,14 +296,25 @@ public class lawn_controller /*implements Initializable*/ {
                                 buying_tiles.get(selected_buying_plant).setDisable(false);
                             }
                         }).start();
-                        plant_placed(selected_buying_plant,i);
-                        event.setDropCompleted(true);
-                        event.consume();
 
+                        plant_placed(selected_buying_plant,i);
                     }
+
+                    // drop completed
+                    shovel.shovel_activated = false;
+                    event.setDropCompleted(true);
+                    event.consume();
+
                 }
             });
         }
+    }
+
+
+    // initialized block, runs whenever fxml is generated
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+
     }
 
 
@@ -271,6 +323,7 @@ public class lawn_controller /*implements Initializable*/ {
 
     @FXML
     private ImageView menu;
+
 
     public boolean sun_above_cost(int x, int s) {
         if((x==0 && s<50) || (x==1 && s<100) || (x==2 && s<50) || (x==3 && s<150))
@@ -329,12 +382,11 @@ public class lawn_controller /*implements Initializable*/ {
 
     // self-defined functions
 
-    void setLawn_parent(Pane l) {
+    void setLawn_parent(Pane l, int level) {
         this.lawn_parent = l;
         System.out.println(lawn_parent==null);
 
         // now running the initialized functions...
-        int level = 2;
         display_buying_tiles(level);
         set_all_tiles();
 
@@ -347,6 +399,10 @@ public class lawn_controller /*implements Initializable*/ {
         for(ImageView i: all_tiles) {
             lawn_parent.getChildren().add(i);
         }
+
+        if(level>2) { add_shovel(); }
+
+
     }
 
     private void glow_image(ImageView i){
