@@ -12,7 +12,6 @@ abstract public class Character {
         return hp;
     }
 
-    abstract public void attack(Character c);
 
     public void setHp(int hp) {
         this.hp = hp;

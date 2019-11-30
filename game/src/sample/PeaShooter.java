@@ -15,14 +15,21 @@ public class PeaShooter extends Plants{
     public Pea getPea() {
         return pea;
     }
+    static int attack_value;
 
+    public static int getAttack_value() {
+        return attack_value;
+    }
     Pea pea;
     boolean shoot;
-    PeaShooter(Pane pl,ImageView img,int tile) {
+    PeaShooter(Pane pl,ImageView img,int tile,Level level) {
+        attack_value=20;
+        hp=300;
         shoot=false;
         lawn_parent=pl;
         this.img=img;
         tile_no=tile;
+        this.level=level;
     }
 
     public double getpeaposx() {

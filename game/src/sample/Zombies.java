@@ -13,6 +13,7 @@ import javafx.util.Duration;
 import javax.swing.text.Element;
 import java.util.List;
 import java.util.concurrent.Callable;
+import java.util.concurrent.TimeUnit;
 
 public class Zombies extends Character {
 
@@ -23,6 +24,8 @@ public class Zombies extends Character {
     ImageView zombie_image;
     TranslateTransition tt;
     double mili;
+    Player player;
+    Level level;
 
     public double getMili() {
         return mili;
@@ -32,7 +35,7 @@ public class Zombies extends Character {
         this.mili = mili;
     }
 
-    Zombies(Pane lp, List<Plants> l) {
+    Zombies(Pane lp, List<Plants> l, Player player, Level level) {
         lawn_parent=lp;plants_on_field=l;
         tt = new TranslateTransition();
         zombie_image=new ImageView(new Image(getClass().getResourceAsStream("../main/resources/zombie_normal.gif")));
@@ -40,43 +43,34 @@ public class Zombies extends Character {
         zombie_image.setLayoutY(239);
         zombie_image.setFitHeight(138);
         zombie_image.setFitWidth(100);
+        this.player=player;
+        this.level=level;
+        hp=60; attack_value=50;
         //lawn_parent.getChildren().add(zombie_image);
+    }
+
+    public void hit_by_pea(int damage) {
+        hp-=damage;
+        if(hp<=0) {
+            tt.stop();
+            zombie_image.setImage(new Image(getClass().getResourceAsStream("../main/resources/zombie_normal_dying.gif")));
+            try {
+                TimeUnit.MILLISECONDS.sleep(500);
+            } catch (InterruptedException e) { }
+
+            level.zombie_killed(this);
+            zombie_image.setDisable(true);
+            zombie_image.setVisible(false);
+            lawn_parent.getChildren().remove(zombie_image);
+        }
     }
 
     public TranslateTransition getTt() {
         return tt;
     }
 
-    public void plant_added(Plants p) {
-
-//        System.out.println(lawn_parent.getChildren().contains(zombie_image));
-//        System.out.println(lawn_parent.getChildren().contains(p.getImg()));
-//
-//        ImageView zom=new ImageView(new Image(getClass().getResourceAsStream("../main/resources/pea.png")));
-//        zom.setX(p.getImg().getLayoutX()+50); zom.setY(p.getImg().getLayoutY()); zom.setFitHeight(34); zom.setFitWidth(31);
-//        lawn_parent.getChildren().add(zom);
-//
-//        ObservableBooleanValue colliding = Bindings.createBooleanBinding(new Callable<Boolean>() {
-//
-//            @Override
-//            public Boolean call() throws Exception {
-//                return zombie_image.getBoundsInParent().intersects(zom.getBoundsInParent());
-//            }
-//
-//        }, zombie_image.boundsInParentProperty(), zom.boundsInParentProperty());
-//
-//        colliding.addListener(new ChangeListener<Boolean>() {
-//            @Override
-//            public void changed(ObservableValue<? extends Boolean> obs,
-//                                Boolean oldValue, Boolean newValue) {
-//                if (newValue) {
-//                    System.out.println("Colliding");
-//                    tt.stop();
-//                } else {
-//                    System.out.println("Not colliding");
-//                }
-//            }
-//        });
+    public void attack_plant(Plants p) {
+        p.setHp(p.getHp()-attack_value);
     }
 
     public int getAttack_value() {

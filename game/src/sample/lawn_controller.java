@@ -1,5 +1,8 @@
 package sample;
 
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
+import javafx.scene.media.MediaView;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -15,9 +18,6 @@ import javafx.scene.image.Image;
 import javafx.scene.input.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
-import javafx.scene.media.Media;
-import javafx.scene.media.MediaPlayer;
-import javafx.scene.media.MediaView;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Rectangle;
@@ -231,7 +231,7 @@ public class lawn_controller implements Initializable /*implements Initializable
                             i.setImage(blank);
                             i.setOpacity(0.3);
                             shovel.shovel_activated = false;
-                            level.plant_removed(all_tiles.indexOf(i)+1);
+                            level.plant_removed(all_tiles.indexOf(i)+1,0);
 
                             // here, add the code to remove the plant from the arraylist containing all the present plants
                             // which is created by Udit
@@ -282,14 +282,6 @@ public class lawn_controller implements Initializable /*implements Initializable
                         // disabling the required buying tile ...
                         System.out.println("plant placed successfully...");
                         add_media_view(selected_buying_plant);
-                        //buying_tiles.get(selected_buying_plant).setDisable(true);
-                        //ColorAdjust ca=new ColorAdjust();
-                        //ca.setBrightness(-0.6);
-                        //buying_tiles.get(selected_buying_plant).setEffect(ca);
-
-
-
-
 
                         plant_placed(selected_buying_plant,i,all_tiles.indexOf(i)+1);
                     }
@@ -458,15 +450,12 @@ public class lawn_controller implements Initializable /*implements Initializable
                     lawn_parent.getChildren().add(media_view.get(i));
                 }
                 catch (Exception e) {}
-
             }
         }
 
         for(ImageView i: all_tiles) {
             lawn_parent.getChildren().add(i);
         }
-
-
 
         if(level>2) { add_shovel(); }
 
