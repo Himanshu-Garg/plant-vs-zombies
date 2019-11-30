@@ -1,6 +1,5 @@
 package sample;
 
-import com.sun.xml.internal.ws.policy.privateutil.PolicyUtils;
 import javafx.animation.TranslateTransition;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -23,6 +22,7 @@ import javafx.util.Duration;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
+import com.sun.xml.internal.ws.policy.privateutil.PolicyUtils;
 
 public class welcome_controller {
 
@@ -94,7 +94,6 @@ public class welcome_controller {
         Player player=new Player();
         Level level1=new Level1(player,lawn_parent);
 
-        level1.start_level();
         player.set_level(level1);
 
         lawn_controller lc = loader.getController();
@@ -102,6 +101,7 @@ public class welcome_controller {
         lc.set_level(level1);
         lc.set_player(player);
 
+        level1.start_level();
 
 
         ImageView zombiehead =new ImageView(new Image(getClass().getResourceAsStream("../main/resources/head.png")));

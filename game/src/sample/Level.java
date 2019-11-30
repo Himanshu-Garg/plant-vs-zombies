@@ -1,7 +1,12 @@
 package sample;
 
+import javafx.animation.Timeline;
 import javafx.animation.TranslateTransition;
 import javafx.application.Platform;
+import javafx.beans.binding.Bindings;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableBooleanValue;
+import javafx.beans.value.ObservableValue;
 import javafx.geometry.Bounds;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -14,7 +19,10 @@ import javafx.util.Duration;
 import sun.security.provider.Sun;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Observable;
+import java.util.concurrent.Callable;
 import java.util.concurrent.TimeUnit;
 
 public class Level {
@@ -27,10 +35,13 @@ public class Level {
     volatile List<PeaShooter> list_of_shooters;
     volatile List<Sunflower> list_of_sunflowers;
     volatile List<ImageView> list_of_peas;
+    List<Zombies> zombies_on_screen;
     List<Double> time;
     Text no_of_suns=new Text(210,42,"50");
+    HashMap<Zombies,Plants> stopped_zombies;
 
     Level(Player p, Pane lp) {
+        zombies_on_screen=new ArrayList<Zombies>();
         player=p;
         lawn_parent=lp;
         level_complete=false;
@@ -41,6 +52,7 @@ public class Level {
         list_of_peas=new ArrayList<ImageView>();
         list_of_shooters=new ArrayList<PeaShooter>();
         list_of_plants=new ArrayList<Plants>();
+        stopped_zombies=new HashMap<Zombies,Plants>();
     }
 
     public void update_no_of_suns(int n) {
@@ -75,11 +87,20 @@ public class Level {
             public void run() {
                 int j=0;
                 while(j<time.size()) {
+                    Runnable updater=new Runnable() {
+                        @Override
+                        public void run() {
+                            zombies_on_screen.add(new zombiemover(list_of_zombies).get_j_zombie());
+                            zombies_on_screen.get(zombies_on_screen.size()-1).move();
+                            for(int i=0;i<list_of_plants.size();i++)
+                                zombies_on_screen.get(zombies_on_screen.size()-1).plant_added(list_of_plants.get(i));
+                        }
+                    };
                     try {
                         TimeUnit.MILLISECONDS.sleep((int)(time.get(j)*1000));
                     }
                     catch (InterruptedException e) { }
-                    Platform.runLater(new zombiemover(j,list_of_zombies));
+                    Platform.runLater(updater);
                     j+=1;
                 }
             }
@@ -116,8 +137,19 @@ public class Level {
                 Runnable updater =new Runnable() {
                     @Override
                     public void run() {
+                        List<Double> y_of_zombie=new ArrayList<Double>();
+                        for(int j=0;j<zombies_on_screen.size();j++) {
+                            y_of_zombie.add(zombies_on_screen.get(j).getZombie_image().getLayoutY());
+                        }
+
+                        int[] arr={0,0,0,0,0};
+                        if(y_of_zombie.contains(239.0)) {
+                            arr[2] = 1;
+                        }
+
                         for(int i=0;i<list_of_shooters.size();i++) {
-                            make_pea(list_of_shooters.get(i).getpeaposx(),list_of_shooters.get(i).getpeaposy());
+                            if(arr[list_of_shooters.get(i).getTile_no()/9]==1)
+                                make_pea(list_of_shooters.get(i).getpeaposx(),list_of_shooters.get(i).getpeaposy());
                         }
                     }
                 };
@@ -130,7 +162,6 @@ public class Level {
                     catch (InterruptedException e) { }
                     Platform.runLater(updater);
                 }
-
             }
         });
         t4.setDaemon(true);
@@ -150,7 +181,7 @@ public class Level {
                 while(!level_complete) {
                     check_collision();
                     try {
-                        TimeUnit.MILLISECONDS.sleep(10);
+                        TimeUnit.MILLISECONDS.sleep(1000);
                     }
                     catch (InterruptedException e) {
                     }
@@ -159,51 +190,59 @@ public class Level {
         });
         t5.setDaemon(true);
         t5.start();
+
+        Thread t6=new Thread(new Runnable() {
+            @Override
+            public void run() {
+                while(!level_complete) {
+                    check_plant_zombie_coll();
+                    check_stopped_zombies();
+                    try {
+                        TimeUnit.MILLISECONDS.sleep(50);
+                    }
+                    catch (InterruptedException e) { }
+                }
+            }
+        });
+        t6.setDaemon(true);
+        t6.start();
     }
 
-//    class make_pea
-//    {
-//        double x,y;
-//        ImageView pea;
-//
-//        make_pea(double x, double y) {
-//            this.x=x;
-//            this.y=y;
-//            pea=new ImageView(new Image(getClass().getResourceAsStream("../main/resources/pea.png")));
-//            pea.setX(x); pea.setY(y); pea.setFitHeight(34); pea.setFitWidth(31);
-//        }
-//
-//        public ImageView getPea() {
-//            return pea;
-//        }
-//
-//        public void run() {
-//            TranslateTransition tt1=new TranslateTransition();
-//            tt1.setDuration(Duration.seconds(2.8));
-//            tt1.setNode(pea);
-//            tt1.setToX(1200);
-//            tt1.play();
-//
-////            t=new Thread(new Runnable() {
-////                @Override
-////                public void run() {
-////                    while(pea.isVisible() && !stop_thread) {
-////                        Bounds obj1=pea.localToScene(pea.getBoundsInLocal());
-////                        for(int j=0;j<list_of_zombies.size();j++) {
-////                            Bounds obj2=list_of_zombies.get(j).getZombie_image().localToScene(list_of_zombies.get(j).getZombie_image().getBoundsInLocal());
-////                            if(obj1.intersects(obj2)) {
-////                                pea.setVisible(false);
-////                            }
-////                        }
-////                    }
-////                }
-////            });
-////            t.setName("I am super annoying");
-////            t.setDaemon(true);
-////            t.start();
-//        }
-//    }
+    public void check_plant_zombie_coll() {
+        for(int i=0;i<zombies_on_screen.size();i++) {
+            for (int j = 0; j < list_of_plants.size(); j++) {
+                ImageView zom=zombies_on_screen.get(i).getZombie_image();
+                ImageView pl=list_of_plants.get(j).getImg();
+                //System.out.println(zom.getBoundsInParent().getMinX()+" "+pl.getBoundsInParent().getMinX());
+                //System.out.println(zom.getBoundsInParent().getMinY()+" "+pl.getBoundsInParent().getMinY());
+                if(zom.getBoundsInParent().getMinX()-pl.getBoundsInParent().getMinX()<80 &&
+                        zom.getBoundsInParent().getMinY()-pl.getBoundsInParent().getMinY()<0 &&
+                        -zom.getBoundsInParent().getMinY()+pl.getBoundsInParent().getMinY()<80 &&
+                        pl.getImage()!=player.getImg())
 
+                    zombies_on_screen.get(i).getTt().stop();
+                Duration t=zombies_on_screen.get(i).getTt().getCurrentTime();
+                double mili=t.toMillis();
+                zombies_on_screen.get(i).setMili(mili);
+                stopped_zombies.put(zombies_on_screen.get(i),list_of_plants.get(j));
+
+            }
+        }
+    }
+
+    public void check_stopped_zombies() {
+        List<Zombies> rem_zombies=new ArrayList<Zombies>();
+        stopped_zombies.forEach((zom,pl)-> {
+            if(pl.getImg().getImage()==player.getImg()) {
+                zom.getTt().play();
+                rem_zombies.add(zom);
+            }
+        });
+        for(int i=0;i<rem_zombies.size();i++) {
+            stopped_zombies.remove(rem_zombies.get(i));
+        }
+
+    }
     public void check_collision() {
         for(int i=0;i<list_of_peas.size();i++) {
             for(int j=0;j<list_of_zombies.size();j++) {
@@ -234,7 +273,21 @@ public class Level {
         tt1.setToX(1200);
         tt1.play();
 
-        list_of_peas.add(pea);
+        ObservableBooleanValue colliding = Bindings.createBooleanBinding(new Callable<Boolean>() {
+            @Override
+            public Boolean call() throws Exception {
+                return pea.localToScene(pea.getBoundsInLocal()).intersects(list_of_zombies.get(0).getZombie_image().localToScene(list_of_zombies.get(0).getZombie_image().getBoundsInLocal()));
+            }
+        },pea.boundsInParentProperty(),list_of_zombies.get(0).getZombie_image().boundsInParentProperty());
+
+        colliding.addListener(new ChangeListener<Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+                if(newValue) pea.setVisible(false);
+            }
+        });
+
+        //list_of_peas.add(pea);
         lawn_parent.getChildren().add(pea);
     }
 
@@ -302,12 +355,12 @@ public class Level {
             player.plant_purchased(50);
         }
         else if(x==1) {
-            p = new PeaShooter(lawn_parent,i);
+            p = new PeaShooter(lawn_parent,i,tile);
             list_of_shooters.add((PeaShooter)p);
             player.plant_purchased(100);
         }
         else if(x==2) {
-            p = new Wallnut();
+            p = new Wallnut(i);
             player.plant_purchased(50);
         }
         else if(x==3) {
@@ -316,23 +369,30 @@ public class Level {
         }
         p.setTile(tile);
         list_of_plants.add(p);
+        aware_zombie(p);
+    }
+
+    public void aware_zombie(Plants p) {
+        for(int i=0;i<list_of_zombies.size();i++) {
+            list_of_zombies.get(i).plant_added(p);
+        }
 
     }
 
 }
 
 
-class zombiemover implements Runnable
+class zombiemover
 {
     int pos;
-    List<Zombies> loz;
-    zombiemover(int i, List<Zombies> l) {
-        pos=i;
+    static List<Zombies> loz;
+    static int j=-1;
+    zombiemover(List<Zombies> l) {
+        j+=1;
         loz=new ArrayList<Zombies>(l);
     }
 
-    @Override
-    public void run() {
-        loz.get(pos).move();
+    public static Zombies get_j_zombie() {
+        return loz.get(j);
     }
 }

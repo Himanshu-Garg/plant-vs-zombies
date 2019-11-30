@@ -1,10 +1,22 @@
 package sample;
 
+import javafx.scene.image.Image;
 import javafx.scene.layout.Pane;
+
+import javax.swing.text.html.ImageView;
 
 public class Player {
 
     Level level;
+    Image img;
+
+    public void setImg(Image img) {
+        this.img = img;
+    }
+
+    public Image getImg() {
+        return img;
+    }
 
     private int no_of_suns=50;
 

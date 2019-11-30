@@ -1,5 +1,6 @@
 package sample;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.Pane;
 
 import java.util.List;
 
@@ -13,6 +14,8 @@ public class Plants {
     protected List<Zombies> zombies_on_field;
     ImageView img;
     protected int tile_no;
+    Pane lawn_parent;
+
 
     public int getTile_no() {
         return tile_no;

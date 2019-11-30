@@ -12,18 +12,17 @@ import java.util.concurrent.TimeUnit;
 
 public class PeaShooter extends Plants{
 
-    Pane lawn_parent;
-
     public Pea getPea() {
         return pea;
     }
 
     Pea pea;
     boolean shoot;
-    PeaShooter(Pane pl,ImageView img) {
+    PeaShooter(Pane pl,ImageView img,int tile) {
         shoot=false;
         lawn_parent=pl;
         this.img=img;
+        tile_no=tile;
     }
 
     public double getpeaposx() {
@@ -57,8 +56,6 @@ public class PeaShooter extends Plants{
                 }
             }
         });
-
-        //Event x=new Event();
 
         t.setDaemon(true);
         t.start();

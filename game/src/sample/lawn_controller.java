@@ -36,15 +36,14 @@ public class lawn_controller implements Initializable /*implements Initializable
     Pane lawn_parent;
     Player player;
     Shovel shovel;
+    Image blank = new Image(getClass().getResourceAsStream("../main/resources/tiles/3.png"));
 
     // experimenting
 
     ArrayList<ImageView> all_tiles = new ArrayList<>();
     ArrayList<ImageView> buying_tiles = new ArrayList<>();
-    Image blank = new Image(getClass().getResourceAsStream("../main/resources/tiles/3.png"));
 
     int selected_buying_plant;  // can be -> "0 = sf", "1 = ps", "2 = wn", "3 = cb"
-
 
     private void add_shovel() {
         shovel = new Shovel();
@@ -93,6 +92,8 @@ public class lawn_controller implements Initializable /*implements Initializable
         Image planting_peashooter = new Image(getClass().getResourceAsStream("../main/resources/PEAPLANT.JPG"));
         Image planting_cheerybomb = new Image(getClass().getResourceAsStream("../main/resources/CHERRYBOMB.png"));
         Image planting_walnut = new Image(getClass().getResourceAsStream("../main/resources/walnut_full_life.gif"));
+
+
 
         ArrayList<Image> planting_tiles = new ArrayList<>();
         planting_tiles.add(planting_sunflower);
@@ -430,6 +431,7 @@ public class lawn_controller implements Initializable /*implements Initializable
 
     public void set_player(Player player) {
         this.player = player;
+        player.setImg(blank);
     }
 // self-defined functions ends here ------
 
