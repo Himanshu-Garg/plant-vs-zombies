@@ -15,6 +15,9 @@ import javafx.scene.image.Image;
 import javafx.scene.input.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
+import javafx.scene.media.MediaView;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Rectangle;
@@ -278,24 +281,15 @@ public class lawn_controller implements Initializable /*implements Initializable
 
                         // disabling the required buying tile ...
                         System.out.println("plant placed successfully...");
-                        buying_tiles.get(selected_buying_plant).setDisable(true);
-                        ColorAdjust ca=new ColorAdjust();
-                        ca.setBrightness(-0.6);
-                        buying_tiles.get(selected_buying_plant).setEffect(ca);
+                        add_media_view(selected_buying_plant);
+                        //buying_tiles.get(selected_buying_plant).setDisable(true);
+                        //ColorAdjust ca=new ColorAdjust();
+                        //ca.setBrightness(-0.6);
+                        //buying_tiles.get(selected_buying_plant).setEffect(ca);
 
-                        new Thread(new Runnable() {
-                            @Override
-                            public void run() {
-                                try {
-                                    TimeUnit.MILLISECONDS.sleep(5000);
-                                }
-                                catch(InterruptedException e) {
-                                    System.out.println("Cant sleep");
-                                }
-                                buying_tiles.get(selected_buying_plant).setEffect(null);
-                                buying_tiles.get(selected_buying_plant).setDisable(false);
-                            }
-                        }).start();
+
+
+
 
                         plant_placed(selected_buying_plant,i,all_tiles.indexOf(i)+1);
                     }
@@ -308,6 +302,72 @@ public class lawn_controller implements Initializable /*implements Initializable
                 }
             });
         }
+    }
+
+    ArrayList<MediaPlayer> media_player = new ArrayList<>();
+    ArrayList<MediaView> media_view = new ArrayList<>();
+
+    private void create_media_player(int level) {
+
+        ArrayList<String> url = new ArrayList<>();
+        url.add("/animations/sunflower.mp4");
+        url.add("/animations/pea.mp4");
+        url.add("/animations/walnut.mp4");
+        url.add("/animations/cherry.mp4");
+
+        for(int i=0;i<4;i++) {
+            //Media m = new Media("");
+            MediaPlayer mp = new MediaPlayer(new Media(this.getClass().getResource(url.get(i)).toExternalForm()));
+            MediaView mv = new MediaView(mp);
+
+            mv.setLayoutX(9);
+            mv.setLayoutY( 68*i +7);
+            mv.setFitWidth(102);
+            mv.setFitHeight(57);
+
+            mv.setDisable(true);
+            mv.setOpacity(0);
+            mv.setPreserveRatio(false);
+
+
+            media_player.add(mp);
+            media_view.add(mv);
+
+            mp.setOnEndOfMedia(() -> {
+
+                System.out.println("media ended");
+                mv.setDisable(true);
+                mv.setOpacity(0);
+            });
+
+        }
+    }
+
+    private void add_media_view(int i) {
+
+        ArrayList<String> url = new ArrayList<>();
+        url.add("/animations/sunflower.mp4");
+        url.add("/animations/pea.mp4");
+        url.add("/animations/walnut.mp4");
+        url.add("/animations/cherry.mp4");
+
+        media_view.get(i).setOpacity(0.5);
+        media_view.get(i).setDisable(false);
+
+        //media_player.get(i).getMedia() = ;
+        media_player.set(i, new MediaPlayer(new Media(this.getClass().getResource(url.get(i)).toExternalForm()))) ;
+        media_view.get(i).setMediaPlayer(media_player.get(i));
+
+        media_player.get(i).setOnEndOfMedia(() -> {
+
+            System.out.println("media ended");
+            media_view.get(i).setDisable(true);
+            media_view.get(i).setOpacity(0);
+        });
+
+        media_player.get(i).play();
+
+
     }
 
 
@@ -389,16 +449,24 @@ public class lawn_controller implements Initializable /*implements Initializable
         // now running the initialized functions...
         display_buying_tiles(level);
         set_all_tiles();
+        create_media_player(level);
 
         for(int i=0;i<=level;i++) {
             if(i<buying_tiles.size()) {
                 lawn_parent.getChildren().add(buying_tiles.get(i));
+                try {
+                    lawn_parent.getChildren().add(media_view.get(i));
+                }
+                catch (Exception e) {}
+
             }
         }
 
         for(ImageView i: all_tiles) {
             lawn_parent.getChildren().add(i);
         }
+
+
 
         if(level>2) { add_shovel(); }
 
