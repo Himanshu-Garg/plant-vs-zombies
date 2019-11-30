@@ -22,10 +22,10 @@ public class Level {
     Player player;
     Pane lawn_parent;
     boolean level_complete;
-    List<Plants> list_of_plants;
+    volatile List<Plants> list_of_plants;
     List<Zombies> list_of_zombies;
-    List<PeaShooter> list_of_shooters;
-    List<Sunflower> list_of_sunflowers;
+    volatile List<PeaShooter> list_of_shooters;
+    volatile List<Sunflower> list_of_sunflowers;
     volatile List<ImageView> list_of_peas;
     List<Double> time;
     Text no_of_suns=new Text(210,42,"50");
@@ -40,6 +40,7 @@ public class Level {
         list_of_sunflowers=new ArrayList<Sunflower>();
         list_of_peas=new ArrayList<ImageView>();
         list_of_shooters=new ArrayList<PeaShooter>();
+        list_of_plants=new ArrayList<Plants>();
     }
 
     public void update_no_of_suns(int n) {
@@ -136,11 +137,28 @@ public class Level {
         t4.start();
 
         Thread t5=new Thread(new Runnable() {
+            int j=0;
+
             @Override
             public void run() {
-
+                if(j==0) {
+                    try {
+                        TimeUnit.MILLISECONDS.sleep(2800);
+                    }
+                    catch (InterruptedException e) { }
+                }
+                while(!level_complete) {
+                    check_collision();
+                    try {
+                        TimeUnit.MILLISECONDS.sleep(10);
+                    }
+                    catch (InterruptedException e) {
+                    }
+                }
             }
         });
+        t5.setDaemon(true);
+        t5.start();
     }
 
 //    class make_pea
@@ -186,6 +204,26 @@ public class Level {
 //        }
 //    }
 
+    public void check_collision() {
+        for(int i=0;i<list_of_peas.size();i++) {
+            for(int j=0;j<list_of_zombies.size();j++) {
+                try {
+                    ImageView pea = list_of_peas.get(i);
+                    Zombies zombie = list_of_zombies.get(j);
+                    Bounds obj1 = pea.localToScene(pea.getBoundsInLocal());
+                    Bounds obj2 = zombie.getZombie_image().localToScene(zombie.getZombie_image().getBoundsInLocal());
+                    if (obj1.intersects(obj2)) {
+                        try {
+                            TimeUnit.MILLISECONDS.sleep(50);
+                        } catch (InterruptedException e) {
+                        }
+                        pea.setVisible(false);
+                    }
+                } catch (Exception e) { }
+            }
+        }
+    }
+
     public void make_pea(double x,double y) {
         ImageView pea=new ImageView(new Image(getClass().getResourceAsStream("../main/resources/pea.png")));
         pea.setX(x); pea.setY(y); pea.setFitHeight(34); pea.setFitWidth(31);
@@ -198,9 +236,30 @@ public class Level {
 
         list_of_peas.add(pea);
         lawn_parent.getChildren().add(pea);
-
-
     }
+
+    public void plant_removed(int tile) {
+        System.out.println(list_of_plants==null);
+        Plants p=null;
+
+        for(int i=0;i<list_of_plants.size();i++) {
+            if(list_of_plants.get(i).getTile_no()==tile) {
+                p=list_of_plants.get(i);
+                System.out.println("reached");
+                break;
+            }
+        }
+        try {
+            list_of_sunflowers.remove(p);
+        }
+        catch (Exception e) { }
+
+        try {
+            list_of_shooters.remove(p);
+        }
+        catch (Exception e) { }
+    }
+
 
     public void spawn_sun_for_flower(double x, double y) {
         ImageView falling_sun = new ImageView(new Image(getClass().getResourceAsStream("../main/resources/brightsun.png")));
@@ -235,7 +294,7 @@ public class Level {
     }
 
 
-    public void place_plant(int x, ImageView i) {
+    public void place_plant(int x, ImageView i, int tile) {
         Plants p=null;
         if(x==0) {
             p = new Sunflower(i);
@@ -255,6 +314,7 @@ public class Level {
             p = new CherryBomb();
             player.plant_purchased(150);
         }
+        p.setTile(tile);
         list_of_plants.add(p);
 
     }

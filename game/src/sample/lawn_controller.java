@@ -229,6 +229,7 @@ public class lawn_controller implements Initializable /*implements Initializable
                             i.setImage(blank);
                             i.setOpacity(0.3);
                             shovel.shovel_activated = false;
+                            level.plant_removed(all_tiles.indexOf(i)+1);
 
                             // here, add the code to remove the plant from the arraylist containing all the present plants
                             // which is created by Udit
@@ -297,7 +298,7 @@ public class lawn_controller implements Initializable /*implements Initializable
                             }
                         }).start();
 
-                        plant_placed(selected_buying_plant,i);
+                        plant_placed(selected_buying_plant,i,all_tiles.indexOf(i)+1);
                     }
 
                     // drop completed
@@ -425,8 +426,8 @@ public class lawn_controller implements Initializable /*implements Initializable
         level=lev;
     }
 
-    public void plant_placed(int x, ImageView i) {
-        level.place_plant(x,i);
+    public void plant_placed(int x, ImageView i, int tile) {
+        level.place_plant(x,i,tile);
     }
 
     public void set_player(Player player) {

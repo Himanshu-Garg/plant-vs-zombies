@@ -1,4 +1,6 @@
 package sample;
+import javafx.scene.image.ImageView;
+
 import java.util.List;
 
 public class Plants {
@@ -9,7 +11,20 @@ public class Plants {
     protected int time_to_buy;
     protected int time_to_attack;
     protected List<Zombies> zombies_on_field;
+    ImageView img;
     protected int tile_no;
+
+    public int getTile_no() {
+        return tile_no;
+    }
+
+    public void setTile(int tile_no) {
+        this.tile_no = tile_no;
+    }
+
+    public ImageView getImg() {
+        return img;
+    }
 
     public String getDescription() {
         return description;

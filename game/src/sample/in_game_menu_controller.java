@@ -1,6 +1,9 @@
 package sample;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.effect.BoxBlur;
 import javafx.scene.effect.Glow;
 import javafx.scene.image.ImageView;
@@ -48,6 +51,21 @@ public class in_game_menu_controller {
 
     @FXML
     void exit_clicked(MouseEvent event) {
+        System.out.println("exit-to-main-menu button clicked...");
+
+        // following line is used to remove the in-game-menu...
+        back_clicked(event);
+
+        Scene lawn_scene = null;
+        try {
+            Parent lawn_parent = FXMLLoader.load(getClass().getResource("/fxml/welcome.fxml"));
+            lawn_scene = new Scene(lawn_parent);
+        }
+        catch (Exception e) {System.out.println("error in loading_screen_controller.java");}
+
+        // changing scene of lawn-window and set it to main-menu scene...
+        lawn_window.setScene(lawn_scene);
+
 
     }
 

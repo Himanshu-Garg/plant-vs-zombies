@@ -12,7 +12,6 @@ import java.util.concurrent.TimeUnit;
 
 public class PeaShooter extends Plants{
 
-    ImageView img;
     Pane lawn_parent;
 
     public Pea getPea() {

@@ -6,7 +6,6 @@ import sun.security.provider.Sun;
 
 public class Sunflower extends Plants {
     int sunposx,sunposy;
-    ImageView img;
 
     Sunflower(ImageView im) {
         img=im;

@@ -6,10 +6,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.geometry.Bounds;
 import javafx.scene.control.Button;
 import javafx.scene.*;
-import javafx.scene.control.*;
-import javafx.event.*;
-import javafx.scene.effect.Bloom;
-import javafx.scene.effect.ColorAdjust;
 import javafx.scene.effect.Glow;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -69,7 +65,7 @@ public class welcome_controller {
 
     @FXML
     void clicked_choose_level(MouseEvent event) throws IOException {
-        Pane level_parent = FXMLLoader.load(getClass().getResource("/fxml/choose_level_screen.fxml"));
+        Pane level_parent = FXMLLoader.load(getClass().getResource("/fxml/choose_level.fxml"));
         Scene level_scene=new Scene(level_parent);
         Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
         window.setScene(level_scene);
@@ -99,54 +95,6 @@ public class welcome_controller {
         lc.setLawn_parent(lawn_parent, 5);
         lc.set_level(level1);
         lc.set_player(player);
-
-
-//        ImageView pea=new ImageView(new Image(getClass().getResourceAsStream("../main/resources/pea.png")));
-//        pea.setVisible(false); pea.setX(344); pea.setY(290); pea.setFitHeight(34); pea.setFitWidth(31);
-//
-//        new Thread(new Runnable() {
-//            @Override
-//            public void run() {
-//                while(pea.isVisible())
-//                {
-//                    Bounds obj1=pea.localToScene(pea.getBoundsInLocal());
-//                    Bounds obj2=normzombie.localToScene(normzombie.getBoundsInLocal());
-//                    if(obj1.intersects(obj2))
-//                    {
-//                        pea.setVisible(false);
-//                    }
-//                }
-//                lawn_parent.getChildren().remove(pea);
-//            }
-//        }).start();
-
-//
-//
-//
-//        Thread zombiedead=new Thread(new Runnable() {
-//            @Override
-//            public void run() {
-//                try
-//                {
-//                    TimeUnit.MILLISECONDS.sleep(2800*2);
-//                }
-//                catch (InterruptedException e)
-//                {
-//                    System.out.println("Cant sleep");
-//                }
-//                normzombie.setImage(new Image(getClass().getResourceAsStream("../main/resources/zombie_normal_dying.gif")));
-//                try
-//                {
-//                    TimeUnit.MILLISECONDS.sleep(1000);
-//                }
-//                catch (InterruptedException e)
-//                {
-//                    System.out.println("Cant sleep");
-//                }
-//                /*normzombie.setVisible(false);*/
-//                lawn_parent.getChildren().remove(normzombie);
-//            }
-//        });
 
 
 
