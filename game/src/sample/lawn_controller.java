@@ -40,6 +40,7 @@ public class lawn_controller implements Initializable /*implements Initializable
     Player player;
     Shovel shovel;
     Image blank = new Image(getClass().getResourceAsStream("../main/resources/tiles/3.png"));
+    ImageView special_power;
 
     // experimenting
 
@@ -362,6 +363,62 @@ public class lawn_controller implements Initializable /*implements Initializable
 
     }
 
+    private void add_special_power() {
+
+        /**
+         <ImageView fx:id="cloud" fitHeight="112.0" fitWidth="133.0" layoutX="7.0" layoutY="547.0" pickOnBounds="true">
+         <image>
+         <Image url="@../special_power/static.png" />
+         </image>
+         </ImageView>
+         */
+        //dsds;
+
+        special_power =new ImageView(new Image(getClass().getResourceAsStream("../main/resources/special_power/static.png")));
+        special_power.setFitHeight(112);special_power.setFitWidth(133);special_power.setLayoutX(7);special_power.setLayoutY(547);
+
+        lawn_parent.getChildren().add(special_power);
+
+        // setting functions of special power image
+
+        special_power.setOnMouseExited(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                Glow glow = new Glow();
+                glow.setLevel(0);
+                special_power.setEffect(glow);
+            }
+        });
+
+        special_power.setOnMouseEntered(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                Glow glow = new Glow();
+                glow.setLevel(0.7);
+                special_power.setEffect(glow);
+            }
+        });
+
+        special_power.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                System.out.println("Special power activated");
+                //
+                //
+                // here udit will add the code to increase the sun spawning speed for 30 seconds...
+                //
+                //
+                // removing the special power as allowed only once in the level
+                special_power.setDisable(true);
+                special_power.setOpacity(0);
+            }
+        });
+
+
+
+
+    }
+
 
     // initialized block, runs whenever fxml is generated
     @Override
@@ -457,7 +514,8 @@ public class lawn_controller implements Initializable /*implements Initializable
             lawn_parent.getChildren().add(i);
         }
 
-        if(level>2) { add_shovel(); }
+        if(level>3) { add_shovel(); }
+        if(level>4) {add_special_power();}
 
 
     }
