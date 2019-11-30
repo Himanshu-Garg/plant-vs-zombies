@@ -1,5 +1,6 @@
 package sample;
 
+import com.sun.xml.internal.ws.policy.privateutil.PolicyUtils;
 import javafx.animation.TranslateTransition;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -59,7 +60,12 @@ public class welcome_controller {
     }
 
     @FXML
-    void clicked_load_game(MouseEvent event) {
+    void clicked_load_game(MouseEvent event) throws IOException {
+        Pane level_parent = FXMLLoader.load(getClass().getResource("/fxml/load_game_menu.fxml"));
+        Scene level_scene=new Scene(level_parent);
+        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+        window.setScene(level_scene);
+        window.show();
 
     }
 

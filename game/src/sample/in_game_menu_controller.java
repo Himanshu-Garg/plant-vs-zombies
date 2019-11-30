@@ -10,6 +10,8 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
+import java.io.IOException;
+
 
 public class in_game_menu_controller {
 
@@ -25,7 +27,7 @@ public class in_game_menu_controller {
     @FXML
     private ImageView exit;
 
-    private Stage lawn_window;
+    public Stage lawn_window;
 
     @FXML
     void back_clicked(MouseEvent event) {
@@ -95,7 +97,26 @@ public class in_game_menu_controller {
     }
 
     @FXML
-    void save_clicked(MouseEvent event) {
+    void save_clicked(MouseEvent event) throws IOException {
+        System.out.println("Save game button clicked...");
+
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("/fxml/save_game.fxml"));
+        loader.load();
+
+        // to set lawn_window in in_game_menu_controller
+        save_game_controller save_game_menu = loader.getController();
+        save_game_menu.setPause_menu_window((Stage) exit.getScene().getWindow(), lawn_window);
+
+        // to create the scene and  creating the stage
+        Scene save_game_scene = new Scene(loader.getRoot());
+        Stage window = new Stage();
+        window.setTitle("SAVE-GAME Options");
+
+        // setting scene to window and displaying window...
+        window.setScene(save_game_scene);
+        window.show();
+        window.setResizable(false);
 
     }
 

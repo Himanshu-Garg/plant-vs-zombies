@@ -94,8 +94,6 @@ public class lawn_controller implements Initializable /*implements Initializable
         Image planting_cheerybomb = new Image(getClass().getResourceAsStream("../main/resources/CHERRYBOMB.png"));
         Image planting_walnut = new Image(getClass().getResourceAsStream("../main/resources/walnut_full_life.gif"));
 
-
-
         ArrayList<Image> planting_tiles = new ArrayList<>();
         planting_tiles.add(planting_sunflower);
         planting_tiles.add(planting_peashooter);
