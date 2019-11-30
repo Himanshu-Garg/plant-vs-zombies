@@ -26,6 +26,7 @@ public class Zombies extends Character {
     double mili;
     Player player;
     Level level;
+    int row_number;
 
     public double getMili() {
         return mili;
@@ -35,21 +36,26 @@ public class Zombies extends Character {
         this.mili = mili;
     }
 
+    public int getRow_number() {
+        return row_number;
+    }
+
     Zombies(Pane lp, List<Plants> l, Player player, Level level) {
         lawn_parent=lp;plants_on_field=l;
         tt = new TranslateTransition();
         zombie_image=new ImageView(new Image(getClass().getResourceAsStream("../main/resources/zombie_normal.gif")));
         zombie_image.setLayoutX(1139);
-        zombie_image.setLayoutY(239);
+        zombie_image.setLayoutY(239); //change row number as well
         zombie_image.setFitHeight(138);
         zombie_image.setFitWidth(100);
+        row_number=3;
         this.player=player;
         this.level=level;
         hp=60; attack_value=50;
         //lawn_parent.getChildren().add(zombie_image);
     }
 
-    public void hit_by_pea(int damage) {
+    public void hit_by_pea(int damage, int f) {
         hp-=damage;
         if(hp<=0) {
             tt.stop();
@@ -58,10 +64,10 @@ public class Zombies extends Character {
                 TimeUnit.MILLISECONDS.sleep(500);
             } catch (InterruptedException e) { }
 
-            level.zombie_killed(this);
+            level.zombie_killed(this,f);
             zombie_image.setDisable(true);
             zombie_image.setVisible(false);
-            lawn_parent.getChildren().remove(zombie_image);
+            //lawn_parent.getChildren().remove(zombie_image);
         }
     }
 

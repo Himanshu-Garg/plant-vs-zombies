@@ -67,7 +67,4 @@ public class Plants extends Character{
         return zombies_on_field;
     }
 
-
-
-
 }

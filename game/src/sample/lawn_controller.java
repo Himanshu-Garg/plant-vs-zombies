@@ -1,5 +1,6 @@
 package sample;
 
+import javafx.animation.TranslateTransition;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaView;
@@ -26,6 +27,7 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.scene.image.ImageView;
+import javafx.util.Duration;
 
 import java.io.IOException;
 import java.net.URL;
@@ -41,7 +43,6 @@ public class lawn_controller implements Initializable /*implements Initializable
     Shovel shovel;
     Image blank = new Image(getClass().getResourceAsStream("../main/resources/tiles/3.png"));
     ImageView special_power;
-
     // experimenting
 
     ArrayList<ImageView> all_tiles = new ArrayList<>();
@@ -357,12 +358,8 @@ public class lawn_controller implements Initializable /*implements Initializable
             media_view.get(i).setDisable(true);
             media_view.get(i).setOpacity(0);
         });
-
         media_player.get(i).play();
-
-
     }
-
     private void add_special_power() {
 
         /**
@@ -374,8 +371,11 @@ public class lawn_controller implements Initializable /*implements Initializable
          */
         //dsds;
 
-        special_power =new ImageView(new Image(getClass().getResourceAsStream("../main/resources/special_power/static.png")));
-        special_power.setFitHeight(112);special_power.setFitWidth(133);special_power.setLayoutX(7);special_power.setLayoutY(547);
+        special_power = new ImageView(new Image(getClass().getResourceAsStream("../main/resources/special_power/static.png")));
+        special_power.setFitHeight(112);
+        special_power.setFitWidth(133);
+        special_power.setLayoutX(7);
+        special_power.setLayoutY(547);
 
         lawn_parent.getChildren().add(special_power);
 
@@ -403,6 +403,28 @@ public class lawn_controller implements Initializable /*implements Initializable
             @Override
             public void handle(MouseEvent mouseEvent) {
                 System.out.println("Special power activated");
+                for(int i=0;i<5;i++) {
+                    ImageView falling_sun = new ImageView(new Image(getClass().getResourceAsStream("../main/resources/brightsun.png")));
+                    //randomize setX
+                    falling_sun.setX(565-i*100);
+                    falling_sun.setY(-50);
+                    falling_sun.setFitWidth(60);
+                    falling_sun.setFitHeight(60);
+                    TranslateTransition tt = new TranslateTransition();
+                    tt.setDuration(Duration.seconds(8));
+                    tt.setNode(falling_sun);
+                    tt.setToY(641);
+                    tt.play();
+
+
+                    falling_sun.addEventHandler(MouseEvent.MOUSE_CLICKED, event1 -> {
+                        player.sun_collected(25);
+                        tt.stop();
+                        lawn_parent.getChildren().remove(falling_sun);
+                        System.gc();
+                    });
+                    lawn_parent.getChildren().add(falling_sun);
+                }
                 //
                 //
                 // here udit will add the code to increase the sun spawning speed for 30 seconds...
@@ -413,10 +435,6 @@ public class lawn_controller implements Initializable /*implements Initializable
                 special_power.setOpacity(0);
             }
         });
-
-
-
-
     }
 
 
