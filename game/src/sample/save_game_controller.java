@@ -12,8 +12,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -43,6 +42,12 @@ public class save_game_controller implements Initializable {
 
     private Stage in_game_menu_window;
     private Stage lawn_window;
+
+    Level level;
+
+    public void setLevel(Level level) {
+        this.level = level;
+    }
 
     @FXML
     void back_to_menu_entered(MouseEvent event) {
@@ -96,13 +101,7 @@ public class save_game_controller implements Initializable {
             if(!to_check.exists()) {
                 no_previously_saved_game(all.get(i));
             }
-
         }
-
-
-
-
-
     }
 
     // helping functions
@@ -156,6 +155,19 @@ public class save_game_controller implements Initializable {
         i.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent){
+                ObjectOutputStream out=null;
+                try {
+                    out=new ObjectOutputStream(new FileOutputStream(path));
+                    out.writeObject(level);
+                }
+                catch (FileNotFoundException e) { }
+                catch (IOException e) { }
+                finally {
+                    if(out!=null)
+                        try {
+                            out.close();
+                        } catch (IOException e) {}
+                }
                 // add code to serialize the present game to the "path" file
                 //
                 //
@@ -182,11 +194,6 @@ public class save_game_controller implements Initializable {
                 catch (IOException e) {
                     System.out.println("Cannot load welcome fxml from save-game-option");
                 }
-
-
-
-
-
             }
         });
     }

@@ -29,6 +29,12 @@ public class in_game_menu_controller {
 
     public Stage lawn_window;
 
+    Level level;
+
+    public void setLevel(Level level) {
+        this.level = level;
+    }
+
     @FXML
     void back_clicked(MouseEvent event) {
 
@@ -105,6 +111,8 @@ public class in_game_menu_controller {
         loader.load();
 
         // to set lawn_window in in_game_menu_controller
+        save_game_controller sgc=loader.getController();
+        sgc.setLevel(level);
         save_game_controller save_game_menu = loader.getController();
         save_game_menu.setPause_menu_window((Stage) exit.getScene().getWindow(), lawn_window);
 

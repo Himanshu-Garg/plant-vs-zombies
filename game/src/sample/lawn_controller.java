@@ -55,10 +55,6 @@ public class lawn_controller implements Initializable /*implements Initializable
         shovel.add_shovel_to_pane(lawn_parent);
     }
 
-
-
-
-
     public void display_buying_tiles(int level) {
         // this function will display required buying tiles according to level no...
 
@@ -468,6 +464,7 @@ public class lawn_controller implements Initializable /*implements Initializable
 
         // to set lawn_window in in_game_menu_controller
         in_game_menu_controller in_game_menu = loader.getController();
+        in_game_menu.setLevel(level);
         in_game_menu.setLawn_window((Stage) root_AnchorPane.getScene().getWindow());
 
         // to create the scene and make it transparent  .... and also creating the stage

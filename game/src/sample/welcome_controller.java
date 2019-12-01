@@ -109,8 +109,8 @@ public class welcome_controller {
 
         TranslateTransition tt3=new TranslateTransition();
         tt3.setNode(zombiehead);
-        tt3.setDuration(Duration.seconds(30));
-        tt3.setToX(-82);
+        tt3.setDuration(Duration.seconds(l.getTimesum()));
+        tt3.setToX(-233);
         tt3.play();
 
         lawn_parent.getChildren().add(zombiehead);

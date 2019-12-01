@@ -23,14 +23,12 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 import sun.security.provider.Sun;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Observable;
+import java.io.Serializable;
+import java.util.*;
 import java.util.concurrent.Callable;
 import java.util.concurrent.TimeUnit;
 
-public class    Level {
+public class Level implements Serializable {
 
     Player player;
     Pane lawn_parent;
@@ -53,6 +51,14 @@ public class    Level {
     volatile Boolean level_failed;
     volatile int num_of_zombies_killed;
     int level_no;
+
+    public int getTimesum() {
+        int s=0;
+        for(int i=0;i<this.time.size();i++) {
+            s+=this.time.get(i);
+        }
+        return s;
+    }
 
     Level(Player p, Pane lp) {
         list_of_zombies=new ArrayList<Zombies>();
@@ -564,7 +570,9 @@ public class    Level {
     public void spawn_sun() {
         ImageView falling_sun=new ImageView(new Image(getClass().getResourceAsStream("../main/resources/brightsun.png")));
         //randomize setX
-        falling_sun.setX(665); falling_sun.setY(-50); falling_sun.setFitWidth(60); falling_sun.setFitHeight(60);
+        Random random=new Random();
+        int rand=random.nextInt(800)+160;
+        falling_sun.setX(rand); falling_sun.setY(-50); falling_sun.setFitWidth(60); falling_sun.setFitHeight(60);
         TranslateTransition tt=new TranslateTransition();
         tt.setDuration(Duration.seconds(8));
         tt.setNode(falling_sun);
@@ -599,7 +607,7 @@ public class    Level {
             player.plant_purchased(50);
         }
         else if(x==3) {
-            p = new CherryBomb(zombies_on_screen,i);
+            p = new CherryBomb(zombies_on_screen,i,tile);
             player.plant_purchased(150);
         }
         p.setTile(tile);

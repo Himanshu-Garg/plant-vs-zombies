@@ -8,13 +8,15 @@ import java.util.concurrent.TimeUnit;
 public class CherryBomb extends Plants {
 
     List<Zombies> loz;
-    CherryBomb(List<Zombies> l, ImageView im) {
+    CherryBomb(List<Zombies> l, ImageView im, int tile) {
         img=im;
+        loz=new ArrayList<>(l);
+        tile_no=tile;
         try {
             TimeUnit.MILLISECONDS.sleep(100);
         } catch (InterruptedException e) { }
         explode();
-        loz=new ArrayList<>(l);
+
     }
     public void explode() {
         for(int i=0;i<loz.size();i++) {
@@ -25,5 +27,6 @@ public class CherryBomb extends Plants {
             if(xcen-141<zx && zx<xcen+141 && ycen-133.5<zy && zy<ycen+133.5)
                 level.zombie_killed(loz.get(i),1);
         }
+        level.plant_removed(tile_no,0);
     }
 }
