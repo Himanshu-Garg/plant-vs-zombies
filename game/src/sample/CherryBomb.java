@@ -8,10 +8,12 @@ import java.util.concurrent.TimeUnit;
 public class CherryBomb extends Plants {
 
     List<Zombies> loz;
-    CherryBomb(List<Zombies> l, ImageView im, int tile) {
+    CherryBomb(List<Zombies> l, ImageView im, int tile, Player pl, Level level) {
         img=im;
         loz=new ArrayList<>(l);
         tile_no=tile;
+        this.level=level;
+        player=pl;
         try {
             TimeUnit.MILLISECONDS.sleep(100);
         } catch (InterruptedException e) { }
@@ -19,14 +21,24 @@ public class CherryBomb extends Plants {
 
     }
     public void explode() {
+        double xcen=img.getLayoutX()+47;
+        double ycen=img.getLayoutY()+44.5;
+
+        System.out.println(xcen);
+        System.out.println(ycen);
         for(int i=0;i<loz.size();i++) {
-            double xcen=img.getLayoutX()+47;
-            double ycen=img.getLayoutX()+44.5;
             double zx=loz.get(i).getZombie_image().getBoundsInParent().getMinX();
             double zy=loz.get(i).getZombie_image().getBoundsInParent().getMinY();
-            if(xcen-141<zx && zx<xcen+141 && ycen-133.5<zy && zy<ycen+133.5)
-                level.zombie_killed(loz.get(i),1);
+            System.out.println(zx+" "+zy);
+            if(xcen-141<zx && zx<xcen+141 && ycen-133.5<zy && zy<ycen+133.5) {
+                //level.zombie_killed(loz.get(i), 1);
+                loz.get(i).hit_by_pea(10000,1);
+            }
+
         }
-        level.plant_removed(tile_no,0);
+
+        img.setImage(player.getImg());
+        System.out.println("reached");
+        //level.plant_removed(tile_no,0);
     }
 }

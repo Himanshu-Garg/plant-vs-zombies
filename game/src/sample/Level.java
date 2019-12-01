@@ -105,7 +105,7 @@ public class Level implements Serializable {
                 };
                 while(!level_complete) {
                     try {
-                        TimeUnit.MILLISECONDS.sleep(1000);
+                        TimeUnit.MILLISECONDS.sleep(10000);
                     }
                     catch (InterruptedException e) { }
                     Platform.runLater(updater);
@@ -596,22 +596,25 @@ public class Level implements Serializable {
             p = new Sunflower(i,this);
             list_of_sunflowers.add((Sunflower) p);
             player.plant_purchased(50);
+            list_of_plants.add(p);
         }
         else if(x==1) {
             p = new PeaShooter(lawn_parent,i,tile,this);
             list_of_shooters.add((PeaShooter)p);
             player.plant_purchased(100);
+            list_of_plants.add(p);
         }
         else if(x==2) {
             p = new Wallnut(i,this);
             player.plant_purchased(50);
+            list_of_plants.add(p);
         }
         else if(x==3) {
-            p = new CherryBomb(zombies_on_screen,i,tile);
             player.plant_purchased(150);
+            p = new CherryBomb(zombies_on_screen,i,tile,player,this);
+
         }
         p.setTile(tile);
-        list_of_plants.add(p);
         p.setPlayer(player);
     }
 }

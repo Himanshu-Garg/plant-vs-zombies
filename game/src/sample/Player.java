@@ -31,6 +31,7 @@ public class Player {
     }
 
     public void plant_purchased(int x) {
+        System.out.println("purchased");
         sun_collected(-x);
     }
 
