@@ -3,8 +3,10 @@ package sample;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
+import java.io.Serializable;
 
-public class Pea {
+
+public class Pea implements Serializable {
     int x;
     int y;
     ImageView pea;

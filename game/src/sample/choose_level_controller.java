@@ -107,7 +107,7 @@ public class choose_level_controller implements Initializable {
 
                         lawn_controller lc = loader.getController();
                         lc.setLawn_parent(lawn_parent, l);
-                        lc.set_level(l);
+                        //lc.set_level(l);
                         lc.set_player(player);
 
 

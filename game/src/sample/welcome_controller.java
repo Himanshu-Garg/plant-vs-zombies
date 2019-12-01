@@ -98,7 +98,8 @@ public class welcome_controller {
 
         lawn_controller lc = loader.getController();
         lc.setLawn_parent(lawn_parent, l);
-        lc.set_level(l);
+        System.out.println("level at welcome-controller - " + l);
+        //lc.set_level(l);
         lc.set_player(player);
 
         l.start_level();

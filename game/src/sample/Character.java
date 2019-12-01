@@ -1,6 +1,8 @@
 package sample;
 
-abstract public class Character {
+import java.io.Serializable;
+
+abstract public class Character implements Serializable {
     protected int tile_no;
     protected int hp;
 

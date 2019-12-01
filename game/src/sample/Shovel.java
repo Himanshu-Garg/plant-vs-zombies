@@ -13,8 +13,9 @@ import javafx.scene.shape.Rectangle;
 import javafx.scene.shape.StrokeType;
 
 import java.awt.*;
+import java.io.Serializable;
 
-public class Shovel {
+public class Shovel implements Serializable {
 
     private Rectangle r;
     private ImageView shovel;

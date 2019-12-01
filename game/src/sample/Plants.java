@@ -4,7 +4,7 @@ import javafx.scene.layout.Pane;
 
 import java.util.List;
 
-public class Plants extends Character{
+public class Plants extends Character {
 
     public String description;
     protected int unlock_at_level;

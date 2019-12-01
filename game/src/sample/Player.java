@@ -4,8 +4,9 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.Pane;
 
 import javax.swing.text.html.ImageView;
+import java.io.Serializable;
 
-public class Player {
+public class Player implements Serializable {
 
     Level level;
     Image img;

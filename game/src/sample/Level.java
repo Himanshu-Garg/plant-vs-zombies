@@ -620,7 +620,7 @@ public class Level implements Serializable {
 }
 
 
-class zombiemover
+class zombiemover implements Serializable
 {
     int pos;
     static List<Zombies> loz;

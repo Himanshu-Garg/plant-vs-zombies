@@ -6,10 +6,11 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.util.Duration;
 
+import java.io.Serializable;
 import java.util.concurrent.TimeUnit;
 
 
-public class Lawnmower {
+public class Lawnmower implements Serializable {
 
     ImageView img;
     Pane lawn_parent;

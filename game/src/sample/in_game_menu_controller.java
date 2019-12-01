@@ -1,14 +1,18 @@
 package sample;
 
+import javafx.animation.TranslateTransition;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.effect.BoxBlur;
 import javafx.scene.effect.Glow;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 import java.io.IOException;
 
@@ -33,6 +37,7 @@ public class in_game_menu_controller {
 
     public void setLevel(Level level) {
         this.level = level;
+        System.out.println("level at in-game-menu(pause) = " + level);
     }
 
     @FXML
@@ -89,6 +94,50 @@ public class in_game_menu_controller {
 
     @FXML
     void restart_clicked(MouseEvent event) {
+        System.out.println("restart-level button clicked...");
+
+        try {
+            FXMLLoader loader=new FXMLLoader();
+            loader.setLocation(getClass().getResource("/fxml/lawn.fxml"));
+            loader.load();
+
+            back_clicked(event);
+
+            Pane lawn_parent = loader.load(getClass().getResource("/fxml/lawn.fxml"));
+            Scene lawn_scene = new Scene(lawn_parent);
+            Player player=new Player();
+            Level l;
+            if(level.level_no==1) {l=new Level1(player,lawn_parent);}
+            else if(level.level_no==1) {l=new Level2(player,lawn_parent);}
+            else if(level.level_no==1) {l=new Level3(player,lawn_parent);}
+            else if(level.level_no==1) {l=new Level4(player,lawn_parent);}
+            else  {l=new Level5(player,lawn_parent);}
+
+            player.set_level(l);
+
+            lawn_controller lc = loader.getController();
+            lc.setLawn_parent(lawn_parent, l);
+            //lc.set_level(l);
+            lc.set_player(player);
+
+            l.start_level();
+
+            ImageView zombiehead =new ImageView(new Image(getClass().getResourceAsStream("../main/resources/head.png")));
+            zombiehead.setLayoutX(882);zombiehead.setLayoutY(-6);zombiehead.setFitHeight(57);zombiehead.setFitWidth(58);
+
+            TranslateTransition tt3=new TranslateTransition();
+            tt3.setNode(zombiehead);
+            tt3.setDuration(Duration.seconds(l.getTimesum()));
+            tt3.setToX(-233);
+            tt3.play();
+
+            lawn_parent.getChildren().add(zombiehead);
+            lawn_window.setScene(lawn_scene);
+        }
+        catch (Exception e) {
+            System.out.println("problem in restarting level...");
+            e.printStackTrace();
+        }
 
     }
 

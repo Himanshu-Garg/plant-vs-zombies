@@ -47,6 +47,7 @@ public class save_game_controller implements Initializable {
 
     public void setLevel(Level level) {
         this.level = level;
+        System.out.println("level at save-game = " + level);
     }
 
     @FXML
@@ -155,13 +156,14 @@ public class save_game_controller implements Initializable {
         i.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent){
+                System.out.println("Serializing level = " + level);
                 ObjectOutputStream out=null;
                 try {
                     out=new ObjectOutputStream(new FileOutputStream(path));
                     out.writeObject(level);
                 }
-                catch (FileNotFoundException e) { }
-                catch (IOException e) { }
+                catch (FileNotFoundException e) { e.printStackTrace(); }
+                catch (IOException e) { e.printStackTrace(); }
                 finally {
                     if(out!=null)
                         try {

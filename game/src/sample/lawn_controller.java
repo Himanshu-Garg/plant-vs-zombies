@@ -36,13 +36,14 @@ import java.util.List;
 import java.util.ResourceBundle;
 import java.util.concurrent.TimeUnit;
 
-public class lawn_controller implements Initializable /*implements Initializable*/ {
+public class lawn_controller {
 
     Pane lawn_parent;
     Player player;
     Shovel shovel;
     Image blank = new Image(getClass().getResourceAsStream("../main/resources/tiles/3.png"));
     ImageView special_power;
+    public static Level levell;
     // experimenting
 
     ArrayList<ImageView> all_tiles = new ArrayList<>();
@@ -229,8 +230,7 @@ public class lawn_controller implements Initializable /*implements Initializable
                             i.setImage(blank);
                             i.setOpacity(0.3);
                             shovel.shovel_activated = false;
-                            level.plant_removed(all_tiles.indexOf(i)+1,0);
-
+                            levell.plant_removed(all_tiles.indexOf(i)+1,0);
 
                         }
                         else {
@@ -276,7 +276,8 @@ public class lawn_controller implements Initializable /*implements Initializable
                     }
 
                     // drop completed
-                    shovel.shovel_activated = false;
+                    if(shovel!=null) {shovel.shovel_activated = false;}
+                    //shovel.shovel_activated = false;
                     event.setDropCompleted(true);
                     event.consume();
 
@@ -425,13 +426,6 @@ public class lawn_controller implements Initializable /*implements Initializable
     }
 
 
-    // initialized block, runs whenever fxml is generated
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-
-    }
-
-
     @FXML
     private AnchorPane root_AnchorPane;
 
@@ -458,13 +452,19 @@ public class lawn_controller implements Initializable /*implements Initializable
         //
         //
         //
+        //
+        //
+        //
+        //
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("/fxml/in_game_menu.fxml"));
         loader.load();
 
         // to set lawn_window in in_game_menu_controller
         in_game_menu_controller in_game_menu = loader.getController();
-        in_game_menu.setLevel(level);
+        in_game_menu.setLevel(levell);
+        System.out.println("level at in-game-menu = " + levell);
+
         in_game_menu.setLawn_window((Stage) root_AnchorPane.getScene().getWindow());
 
         // to create the scene and make it transparent  .... and also creating the stage
@@ -497,7 +497,11 @@ public class lawn_controller implements Initializable /*implements Initializable
 
     // self-defined functions
 
+
     void setLawn_parent(Pane l, Level ll) {
+        this.levell = ll;
+
+        System.out.println("Level at setLawn-Parent = " + this.levell);
         int level = ll.level_no;
         this.lawn_parent = l;
         System.out.println(lawn_parent==null);
@@ -539,16 +543,15 @@ public class lawn_controller implements Initializable /*implements Initializable
         i.setEffect(glow);
     }
 
-    private Level level;
 
     private List<Plants> list_of_plants=new ArrayList<Plants>();
 
-    public void set_level(Level lev) {
-        level=lev;
-    }
+//    public void set_level(Level lev) {
+//        level=lev;
+//    }
 
     public void plant_placed(int x, ImageView i, int tile) {
-        level.place_plant(x,i,tile);
+        levell.place_plant(x,i,tile);
     }
 
     public void set_player(Player player) {
