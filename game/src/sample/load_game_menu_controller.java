@@ -194,14 +194,36 @@ public class load_game_menu_controller implements Initializable {
 
 
 
+//                            ImageView zombiehead =new ImageView(new Image(getClass().getResourceAsStream("../main/resources/head.png")));
+//                            zombiehead.setLayoutX(882);zombiehead.setLayoutY(-6);zombiehead.setFitHeight(57);zombiehead.setFitWidth(58);
+//
+//                            TranslateTransition tt3=new TranslateTransition();
+//                            tt3.setNode(zombiehead);
+//                            tt3.setDuration(Duration.seconds(30));
+//                            tt3.setToX(-82);
+//                            tt3.play();
+                            System.out.println("Reached");
                             ImageView zombiehead =new ImageView(new Image(getClass().getResourceAsStream("../main/resources/head.png")));
-                            zombiehead.setLayoutX(882);zombiehead.setLayoutY(-6);zombiehead.setFitHeight(57);zombiehead.setFitWidth(58);
+                            zombiehead.setLayoutY(-6);zombiehead.setFitHeight(57);zombiehead.setFitWidth(58);
+                            double total_time=0;
+                            for(int i=0;i<l.getTime().size();i++) {
+                                total_time+=l.getTime().get(i);
+                            }
+                            double speed=233.0/total_time;
+                            double partial_time=0;
+                            for(int i=0;i<l.getNum_of_zombies_killed();i++) {
+                                partial_time+=l.getTime().get(i);
+                            }
+                            double partial_dist=speed*partial_time;
+
+                            zombiehead.setLayoutX(882-partial_dist);
 
                             TranslateTransition tt3=new TranslateTransition();
                             tt3.setNode(zombiehead);
-                            tt3.setDuration(Duration.seconds(30));
-                            tt3.setToX(-82);
+                            tt3.setDuration(Duration.seconds(total_time-partial_time+6));
+                            tt3.setToX(-(233-partial_dist));
                             tt3.play();
+
 
                             lawn_parent.getChildren().add(zombiehead);
                             //lawn_parent.getChildren().add(pea);

@@ -124,7 +124,7 @@ public class in_game_menu_controller {
 
             ImageView zombiehead =new ImageView(new Image(getClass().getResourceAsStream("../main/resources/head.png")));
             zombiehead.setLayoutX(882);zombiehead.setLayoutY(-6);zombiehead.setFitHeight(57);zombiehead.setFitWidth(58);
-            
+
             TranslateTransition tt3=new TranslateTransition();
             tt3.setNode(zombiehead);
             tt3.setDuration(Duration.seconds(l.getTimesum()));

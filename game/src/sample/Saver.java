@@ -123,7 +123,7 @@ public class Saver implements Serializable {
                 lc.getAll_tiles().get(tile_no_of_plants.get(i)-1).setOpacity(1);
                 p = new CherryBomb(new ArrayList<Zombies>(),lc.getAll_tiles().get(tile_no_of_plants.get(i)-1),tile_no_of_plants.get(i),player,level);
                 CherryBomb cb=(CherryBomb)p;
-                //cb.explode();
+                cb.explode();
             }
             p.setTile(tile_no_of_plants.get(i));
             p.setPlayer(player);

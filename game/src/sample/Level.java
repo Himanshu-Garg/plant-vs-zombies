@@ -97,7 +97,7 @@ public class Level implements Serializable {
         for(int i=0;i<this.time.size();i++) {
             s+=this.time.get(i);
         }
-        return s;
+        return s+6;
     }
 
     public void setList_of_plants(List<Plants> list_of_plants) {
@@ -153,6 +153,10 @@ public class Level implements Serializable {
         }
     }
 
+
+    public List<Double> getTime() {
+        return time;
+    }
 
     public void setRow1(List<Zombies> row1) {
         this.row1 = row1;
@@ -716,7 +720,7 @@ public class Level implements Serializable {
             player.plant_purchased(150);
             p = new CherryBomb(zombies_on_screen,i,tile,player,this);
             CherryBomb cb=(CherryBomb)p;
-            //cb.explode();
+            cb.explode();
 
         }
         p.setTile(tile);
