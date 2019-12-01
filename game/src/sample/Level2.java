@@ -12,8 +12,8 @@ import java.util.concurrent.TimeUnit;
 
 public class Level2 extends Level {
 
-    Level2(Player p, Pane pl) {
-        super(p,pl);
+    Level2(Player p, Pane pl, int x) {
+        super(p,pl,x);
         level_no=2;
         time= new ArrayList<Double>();
         double[] arr= {20, 6, 7, 9, 10, 7, 9, 5, 4, 0.5, 0.5, 0.5};

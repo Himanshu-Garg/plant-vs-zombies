@@ -96,11 +96,11 @@ public class choose_level_controller implements Initializable {
                         // UDIT see if tits what you want
                         Level l;
 
-                        if(finalI == 0) {l = new Level1(player,lawn_parent);}
-                        else if(finalI == 1) {l = new Level2(player,lawn_parent);}      // chnage late when level changed
-                        else if(finalI == 2) {l = new Level3(player,lawn_parent);}
-                        else if(finalI == 3) {l = new Level4(player,lawn_parent);}
-                        else {l = new Level5(player,lawn_parent);}
+                        if(finalI == 0) {l = new Level1(player,lawn_parent,0);}
+                        else if(finalI == 1) {l = new Level2(player,lawn_parent,0);}      // chnage late when level changed
+                        else if(finalI == 2) {l = new Level3(player,lawn_parent,0);}
+                        else if(finalI == 3) {l = new Level4(player,lawn_parent,0);}
+                        else {l = new Level5(player,lawn_parent,0);}
 
 
                         l.start_level();

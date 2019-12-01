@@ -48,9 +48,9 @@ public class Level implements Serializable {
     volatile List<Zombies> row3=new ArrayList<Zombies>();//
     volatile List<Zombies> row4=new ArrayList<Zombies>();//
     volatile List<Zombies> row5=new ArrayList<Zombies>();//
-    volatile Boolean level_failed;
-    volatile int num_of_zombies_killed;
-    int level_no;
+    volatile Boolean level_failed;//
+    volatile int num_of_zombies_killed;//
+    int level_no;//
 
 
     public void setLevel_failed(Boolean level_failed) {
@@ -67,6 +67,9 @@ public class Level implements Serializable {
 
     public void setNo_of_suns(Text no_of_suns) {
         this.no_of_suns = no_of_suns;
+        no_of_suns.setFont(Font.font("Verdana", FontWeight.BOLD,30));
+        no_of_suns.setText("50");
+        lawn_parent.getChildren().add(no_of_suns);
     }
 
     public void setStopped_zombies(HashMap<Zombies, Plants> stopped_zombies) {
@@ -113,33 +116,41 @@ public class Level implements Serializable {
         this.list_of_lm = list_of_lm;
     }
 
-    Level(Player p, Pane lp) {
-        no_of_suns=new Text(210,42,"50");
-        list_of_zombies=new ArrayList<Zombies>();
-        num_of_zombies_killed=0;
-        zombies_on_screen=new ArrayList<Zombies>();
-        player=p;
-        lawn_parent=lp;
-        level_complete=false;
-        no_of_suns.setFont(Font.font("Verdana", FontWeight.BOLD,30));
-        no_of_suns.setText("50");
-        lawn_parent.getChildren().add(no_of_suns);
-        list_of_sunflowers=new ArrayList<Sunflower>();
-        list_of_peas=new ArrayList<ImageView>();
-        list_of_shooters=new ArrayList<PeaShooter>();
-        list_of_plants=new ArrayList<Plants>();
-        stopped_zombies=new HashMap<Zombies,Plants>();
-        list_of_lm=new ArrayList<Lawnmower>();
-        list_of_lm.add(new Lawnmower(107,57,lp,5));
-        list_of_lm.add(new Lawnmower(105,158,lp,4));
-        list_of_lm.add(new Lawnmower(106,265,lp,3));
-        list_of_lm.add(new Lawnmower(103,370,lp,2));
-        list_of_lm.add(new Lawnmower(102,475,lp,1));
-        row1=new ArrayList<Zombies>();
-        row2=new ArrayList<Zombies>();
-        row3=new ArrayList<Zombies>();
-        row4=new ArrayList<Zombies>();
-        row5=new ArrayList<Zombies>();
+
+
+    Level(Player p, Pane lp, int x) {
+        if(x==0) {
+            no_of_suns=new Text(210,42,"50");
+            list_of_zombies=new ArrayList<Zombies>();
+            num_of_zombies_killed=0;
+            zombies_on_screen=new ArrayList<Zombies>();
+            player=p;
+            lawn_parent=lp;
+            level_complete=false;
+            no_of_suns.setFont(Font.font("Verdana", FontWeight.BOLD,30));
+            no_of_suns.setText("50");
+            lawn_parent.getChildren().add(no_of_suns);
+            list_of_sunflowers=new ArrayList<Sunflower>();
+            list_of_peas=new ArrayList<ImageView>();
+            list_of_shooters=new ArrayList<PeaShooter>();
+            list_of_plants=new ArrayList<Plants>();
+            stopped_zombies=new HashMap<Zombies,Plants>();
+            list_of_lm=new ArrayList<Lawnmower>();
+            list_of_lm.add(new Lawnmower(107,57,lp,5));
+            list_of_lm.add(new Lawnmower(105,158,lp,4));
+            list_of_lm.add(new Lawnmower(106,265,lp,3));
+            list_of_lm.add(new Lawnmower(103,370,lp,2));
+            list_of_lm.add(new Lawnmower(102,475,lp,1));
+            row1=new ArrayList<Zombies>();
+            row2=new ArrayList<Zombies>();
+            row3=new ArrayList<Zombies>();
+            row4=new ArrayList<Zombies>();
+            row5=new ArrayList<Zombies>();
+        }
+        else {
+            lawn_parent=lp;
+            player=p;
+        }
     }
 
 

@@ -69,19 +69,19 @@ public class Saver implements Serializable {
         Level level;
         System.out.println("printing level from saver - " + level_no);
         if(level_no==1) {
-            level=new Level1(player,lawn_parent);
+            level=new Level1(player,lawn_parent,1);
         }
         else if(level_no==2) {
-            level=new Level2(player,lawn_parent);
+            level=new Level2(player,lawn_parent,1);
         }
         else if(level_no==3) {
-            level=new Level3(player,lawn_parent);
+            level=new Level3(player,lawn_parent,1);
         }
         else if(level_no==4) {
-            level=new Level4(player,lawn_parent);
+            level=new Level4(player,lawn_parent,1);
         }
         else {
-            level=new Level5(player,lawn_parent);
+            level=new Level5(player,lawn_parent,1);
         }
 
         lc = loader.getController();
@@ -159,6 +159,8 @@ public class Saver implements Serializable {
         level.setRow3(new ArrayList<Zombies>());
         level.setRow4(new ArrayList<Zombies>());
         level.setRow5(new ArrayList<Zombies>());
+
+
 
         level.setLevel_failed(false);
         level.setNum_of_zombies_killed(no_of_zombies_killed);
