@@ -1,16 +1,21 @@
 package sample;
 
+import javafx.animation.TranslateTransition;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.effect.ColorAdjust;
 import javafx.scene.effect.Glow;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 import java.io.IOException;
 import java.net.URL;
@@ -108,14 +113,73 @@ public class load_game_menu_controller implements Initializable {
                 can_access(all.get(i));
 
                 // here add code to serialize it when click...
-                //
-                //
-                //
-                //
-                //
-                //
-            }
+                int finalI = i;
+                all.get(i).setOnMouseClicked(new EventHandler<MouseEvent>() {
+                    @Override
+                    public void handle(MouseEvent mouseEvent) {
 
+                        try {
+
+                            Level l;
+                            String path = names.get(finalI);
+
+                            //
+                            //
+                            //
+                            //
+                            // de-serialize function here
+                            // l = deserialized level
+                            // and path = path of file from where has to desearalize
+                            //
+                            //
+
+
+                            FXMLLoader loader=new FXMLLoader();
+                            loader.setLocation(getClass().getResource("/fxml/lawn.fxml"));
+                            loader.load();
+
+                            Pane lawn_parent = loader.load(getClass().getResource("/fxml/lawn.fxml"));
+                            Scene lawn_scene = new Scene(lawn_parent);
+                            Player player=new Player();
+
+                            // setting level according to the i ....
+                            // UDIT see if tits what you want
+
+                            //l.start_level();
+                            //player.set_level(l);
+
+                            lawn_controller lc = loader.getController();
+                            //lc.setLawn_parent(lawn_parent, l);
+                            //lc.set_level(l);
+                            lc.set_player(player);
+
+
+
+                            ImageView zombiehead =new ImageView(new Image(getClass().getResourceAsStream("../main/resources/head.png")));
+                            zombiehead.setLayoutX(882);zombiehead.setLayoutY(-6);zombiehead.setFitHeight(57);zombiehead.setFitWidth(58);
+
+                            TranslateTransition tt3=new TranslateTransition();
+                            tt3.setNode(zombiehead);
+                            tt3.setDuration(Duration.seconds(30));
+                            tt3.setToX(-82);
+                            tt3.play();
+
+                            lawn_parent.getChildren().add(zombiehead);
+                            //lawn_parent.getChildren().add(pea);
+                            Stage window = (Stage)((Node)mouseEvent.getSource()).getScene().getWindow();
+                            window.setScene(lawn_scene);
+                            window.show();
+
+                        }
+                        catch (IOException e) {
+                            System.out.println("cannot desearalize the required file due to some reason ");
+                            e.printStackTrace();
+                        }
+
+                    }
+                });
+
+            }
 
         }
 

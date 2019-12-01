@@ -92,7 +92,7 @@ public class welcome_controller {
         Pane lawn_parent = loader.load(getClass().getResource("/fxml/lawn.fxml"));
         Scene lawn_scene = new Scene(lawn_parent);
         Player player=new Player();
-        Level l=new Level3(player,lawn_parent);
+        Level l=new Level1(player,lawn_parent);
 
         player.set_level(l);
 

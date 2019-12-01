@@ -23,5 +23,12 @@ public class Level3 extends Level {
             list_of_zombies.add(new NormalZombie(lawn_parent,list_of_plants,p,this));
         }
 
+        list_of_zombies.set(5, new ConeZombie(lawn_parent,list_of_plants,p,this));
+        list_of_zombies.set(10, new ConeZombie(lawn_parent,list_of_plants,p,this));
+        list_of_zombies.set(12, new ConeZombie(lawn_parent,list_of_plants,p,this));
+
+
+        System.out.println("Started level - " + level_no);
+
     }
 }

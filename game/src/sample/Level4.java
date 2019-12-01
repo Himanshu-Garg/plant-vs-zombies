@@ -16,12 +16,19 @@ public class Level4 extends Level {
         super(p,pl);
         level_no=4;
         time= new ArrayList<Double>();
-        double[] arr= {20, 6, 7, 9, 4, 7, 3.5, 10, 7, 9, 0.5, 0.5, 0.5, 2, 0.5, 1};
+        double[] arr= {20, 6, 7, 9, 4, 7, 3.5, 10, 7, 9, 0.5, 0.5, 0.5, 2, 0.5, 3};
         list_of_zombies=new ArrayList<Zombies>();
         for(int i=0;i<arr.length;i++) {
             time.add(arr[i]);
             list_of_zombies.add(new NormalZombie(lawn_parent,list_of_plants,p,this));
         }
+
+
+        list_of_zombies.set(8, new ShieldZombie(lawn_parent,list_of_plants,p,this));
+        list_of_zombies.set(11, new ShieldZombie(lawn_parent,list_of_plants,p,this));
+        list_of_zombies.set(14, new ShieldZombie(lawn_parent,list_of_plants,p,this));
+
+        System.out.println("Started level - " + level_no);
 
     }
 }

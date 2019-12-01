@@ -15,13 +15,13 @@ public class NormalZombie extends Zombies {
         zombie_image=new ImageView(new Image(getClass().getResourceAsStream("../main/resources/zombie_normal.gif")));
         Random random=new Random();
         int ran=random.nextInt(5);
-        hp=40; attack_value=50;
+        hp=60; attack_value=50;
         zombie_image.setLayoutY(arr[ran]); //change row number as well
         zombie_image.setLayoutX(1139);
         zombie_image.setFitHeight(138);
         zombie_image.setFitWidth(100);
         row_number=5-ran;
-        duration_of_tt=24.1047;
+        duration_of_tt=30.1047;
     }
 
 }

@@ -23,5 +23,7 @@ public class Level2 extends Level {
             list_of_zombies.add(new NormalZombie(lawn_parent,list_of_plants,p,this));
         }
 
+        System.out.println("Started level - " + level_no);
+
     }
 }

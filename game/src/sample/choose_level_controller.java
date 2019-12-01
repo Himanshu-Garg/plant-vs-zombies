@@ -102,10 +102,6 @@ public class choose_level_controller implements Initializable {
                         else if(finalI == 3) {l = new Level4(player,lawn_parent);}
                         else {l = new Level5(player,lawn_parent);}
 
-                        System.out.println("Started level - " + finalI+1);
-
-
-
                         l.start_level();
                         player.set_level(l);
 
