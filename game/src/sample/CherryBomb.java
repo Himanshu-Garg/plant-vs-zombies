@@ -1,6 +1,5 @@
 package sample;
 
-
 import javafx.scene.image.ImageView;
 import java.util.ArrayList;
 import java.util.List;

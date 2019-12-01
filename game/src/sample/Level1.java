@@ -16,11 +16,12 @@ public class Level1 extends Level {
         super(p,pl);
         level_no=1;
         time= new ArrayList<Double>();
-        double[] arr= {1,7,7,7,7,7,7,7,7,7,7,0.1,0.1,0.1,0.1,0.1,0.1,0.1};
+        double[] arr= {20, 6, 7, 9, 10, 7, 9, 0.5, 0.5, 0.5};
         list_of_zombies=new ArrayList<Zombies>();
         for(int i=0;i<arr.length;i++) {
             time.add(arr[i]);
             list_of_zombies.add(new NormalZombie(lawn_parent,list_of_plants,p,this));
         }
+
     }
 }

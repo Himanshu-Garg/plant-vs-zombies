@@ -92,16 +92,16 @@ public class welcome_controller {
         Pane lawn_parent = loader.load(getClass().getResource("/fxml/lawn.fxml"));
         Scene lawn_scene = new Scene(lawn_parent);
         Player player=new Player();
-        Level level1=new Level1(player,lawn_parent);
+        Level l=new Level3(player,lawn_parent);
 
-        player.set_level(level1);
+        player.set_level(l);
 
         lawn_controller lc = loader.getController();
-        lc.setLawn_parent(lawn_parent, 5);
-        lc.set_level(level1);
+        lc.setLawn_parent(lawn_parent, l);
+        lc.set_level(l);
         lc.set_player(player);
 
-        level1.start_level();
+        l.start_level();
 
 
         ImageView zombiehead =new ImageView(new Image(getClass().getResourceAsStream("../main/resources/head.png")));

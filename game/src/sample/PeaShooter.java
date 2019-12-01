@@ -10,44 +10,40 @@ import javafx.util.Duration;
 
 import java.util.concurrent.TimeUnit;
 
-public class PeaShooter extends Plants {
+public class PeaShooter extends Plants{
 
     public Pea getPea() {
         return pea;
     }
-
     static int attack_value;
 
     public static int getAttack_value() {
         return attack_value;
     }
-
     Pea pea;
     boolean shoot;
-
-    PeaShooter(Pane pl, ImageView img, int tile, Level level) {
-        attack_value = 20;
-        hp = 900;
-        shoot = false;
-        lawn_parent = pl;
-        this.img = img;
-        tile_no = tile;
-        this.level = level;
+    PeaShooter(Pane pl,ImageView img,int tile,Level level) {
+        attack_value=20;
+        hp=900;
+        shoot=false;
+        lawn_parent=pl;
+        this.img=img;
+        tile_no=tile;
+        this.level=level;
     }
 
     public double getpeaposx() {
-        return img.getLayoutX() + 58;
+        return img.getLayoutX()+58;
     }
 
     public double getpeaposy() {
-        return img.getLayoutY() + 10;
+        return img.getLayoutY()+10;
     }
 
     public void setShoot(boolean shoot) {
         this.shoot = shoot;
     }
 
-}
 //    public void shoot_peas() {
 //        Thread t=new Thread(new Runnable() {
 //            @Override
@@ -83,3 +79,6 @@ public class PeaShooter extends Plants {
 //        tt1.play();
 //
 //    }
+
+
+}

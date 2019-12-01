@@ -234,10 +234,13 @@ public class lawn_controller implements Initializable /*implements Initializable
                             i.setOpacity(0.3);
                             shovel.shovel_activated = false;
                             level.plant_removed(all_tiles.indexOf(i)+1,0);
+
+
                         }
                         else {
                             System.out.println("No plant at tile-no- " + i + " (so aborting shovel)");
                         }
+
                     }
 
 
@@ -497,7 +500,8 @@ public class lawn_controller implements Initializable /*implements Initializable
 
     // self-defined functions
 
-    void setLawn_parent(Pane l, int level) {
+    void setLawn_parent(Pane l, Level ll) {
+        int level = ll.level_no;
         this.lawn_parent = l;
         System.out.println(lawn_parent==null);
 

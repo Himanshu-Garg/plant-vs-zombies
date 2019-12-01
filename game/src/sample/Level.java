@@ -7,7 +7,11 @@ import javafx.beans.binding.Bindings;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableBooleanValue;
 import javafx.beans.value.ObservableValue;
+import javafx.event.EventHandler;
+import javafx.fxml.FXMLLoader;
 import javafx.geometry.Bounds;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -15,6 +19,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 import javafx.util.Duration;
 import sun.security.provider.Sun;
 
@@ -182,6 +187,7 @@ public class    Level {
                         if(y_of_zombie.contains(126.0)) {
                             arr[3] = 1;
                         }
+
                         if(y_of_zombie.contains(239.0)) {
                             arr[2] = 1;
                         }
@@ -256,10 +262,52 @@ public class    Level {
     public void check_victory() {
         for(int i=0;i<zombies_on_screen.size();i++) {
             if(zombies_on_screen.get(i).getZombie_image().getBoundsInParent().getMinX()==80) {
+
                 level_complete=true;
                 level_failed=true;
                 //LEVEL Failed zombies ate your brains
                 //Code by HIMANSHU
+                /**
+                 <ImageView fitHeight="310.0" fitWidth="478.0" layoutX="384.0" layoutY="154.0" pickOnBounds="true" preserveRatio="true">
+                 <image>
+                 <Image url="@../rewards/lose_game.png" />
+                 </image>
+                 </ImageView>
+                 */
+                ImageView reward = new ImageView(new Image(getClass().getResourceAsStream("../main/resources/rewards/lose_game.png")));
+                reward.setFitHeight(310);
+                reward.setFitWidth(478);
+                reward.setLayoutX(384);
+                reward.setLayoutY(154);
+                System.out.println("Zombies have reached to the house...");
+                Platform.runLater(new Runnable() {
+                    @Override
+                    public void run() {
+                        lawn_parent.getChildren().add(reward);
+                    }
+                });
+
+
+                reward.setOnMouseClicked(new EventHandler<MouseEvent>() {
+                    @Override
+                    public void handle(MouseEvent mouseEvent) {
+
+                        Scene lawn_scene = null;
+                        try {
+                            Parent lawn_parent = FXMLLoader.load(getClass().getResource("/fxml/welcome.fxml"));
+                            lawn_scene = new Scene(lawn_parent);
+                        }
+                        catch (Exception e) {System.out.println("error in loading_screen_controller.java");}
+
+                        // following line is used to get the stage information...
+                        Stage window = (Stage)reward.getScene().getWindow();
+
+                        // setting scene to window and displaying window...
+                        window.setScene(lawn_scene);
+                        window.show();
+                    }
+                });
+
             }
         }
     }
@@ -286,6 +334,7 @@ public class    Level {
                 System.out.println("rchd");
                 to_be_moved.add(lmgr);
             }
+
 
             for(int j=0;j<to_be_moved.size();j++) {
                 list_of_lm.remove(to_be_moved.get(j));
@@ -367,14 +416,78 @@ public class    Level {
             else if(row==5)
                 row5.remove(zom);
         }
-
         if(num_of_zombies_killed==list_of_zombies.size()) {
             level_complete=true;
             level_failed=false;
             int l=level_no;
-            System.out.println("won the game");
+
             //Level won- give reward
             //Code BY HIMANSHU
+            System.out.println("level won");
+
+            if(level_no==5) {
+                Scene lawn_scene = null;
+                try {
+                    Parent lawn_parent = FXMLLoader.load(getClass().getResource("/fxml/welcome.fxml"));
+                    lawn_scene = new Scene(lawn_parent);
+                }
+                catch (Exception e) {System.out.println("error in loading_screen_controller.java");}
+
+                // following line is used to get the stage information...
+                Stage window = (Stage)lawn_parent.getChildren().get(2).getScene().getWindow();
+
+                // setting scene to window and displaying window...
+                window.setScene(lawn_scene);
+                window.show();
+            }
+            else {
+
+                String url;
+                System.out.println("level no - "  + level_no);
+                if(level_no==1) {url = "../main/resources/rewards/walnut.png";}
+                else if(level_no==2) {url = "../main/resources/rewards/cherry.png";}
+                else if(level_no==3) {url = "../main/resources/rewards/shovel.png";}
+                else  {url = "../main/resources/rewards/special.png";}
+
+
+                ImageView reward = new ImageView(new Image(getClass().getResourceAsStream(url)));
+                reward.setFitHeight(310);
+                reward.setFitWidth(478);
+                reward.setLayoutX(384);
+                reward.setLayoutY(154);
+                System.out.println("Zombies have reached to the house...");
+                Platform.runLater(new Runnable() {
+                    @Override
+                    public void run() {
+                        lawn_parent.getChildren().add(reward);
+                    }
+                });
+
+
+                reward.setOnMouseClicked(new EventHandler<MouseEvent>() {
+                    @Override
+                    public void handle(MouseEvent mouseEvent) {
+
+                        Scene lawn_scene = null;
+                        try {
+                            Parent lawn_parent = FXMLLoader.load(getClass().getResource("/fxml/welcome.fxml"));
+                            lawn_scene = new Scene(lawn_parent);
+                        }
+                        catch (Exception e) {System.out.println("error in loading_screen_controller.java");}
+
+                        // following line is used to get the stage information...
+                        Stage window = (Stage)reward.getScene().getWindow();
+
+                        // setting scene to window and displaying window...
+                        window.setScene(lawn_scene);
+                        window.show();
+                    }
+                });
+
+
+
+            }
+
         }
     }
 

@@ -97,10 +97,10 @@ public class choose_level_controller implements Initializable {
                         Level l;
 
                         if(finalI == 0) {l = new Level1(player,lawn_parent);}
-                        else if(finalI == 1) {l = new Level1(player,lawn_parent);}      // chnage late when level changed
-                        else if(finalI == 2) {l = new Level1(player,lawn_parent);}
-                        else if(finalI == 3) {l = new Level1(player,lawn_parent);}
-                        else {l = new Level1(player,lawn_parent);}
+                        else if(finalI == 1) {l = new Level2(player,lawn_parent);}      // chnage late when level changed
+                        else if(finalI == 2) {l = new Level3(player,lawn_parent);}
+                        else if(finalI == 3) {l = new Level4(player,lawn_parent);}
+                        else {l = new Level5(player,lawn_parent);}
 
                         System.out.println("Started level - " + finalI+1);
 
@@ -110,7 +110,7 @@ public class choose_level_controller implements Initializable {
                         player.set_level(l);
 
                         lawn_controller lc = loader.getController();
-                        lc.setLawn_parent(lawn_parent, finalI +1);
+                        lc.setLawn_parent(lawn_parent, l);
                         lc.set_level(l);
                         lc.set_player(player);
 
