@@ -174,8 +174,21 @@ public class    Level {
                         }
 
                         int[] arr={0,0,0,0,0};
+
+                        if(y_of_zombie.contains(25.0)) {
+                            arr[4] = 1;
+                        }
+                        if(y_of_zombie.contains(126.0)) {
+                            arr[3] = 1;
+                        }
                         if(y_of_zombie.contains(239.0)) {
                             arr[2] = 1;
+                        }
+                        if(y_of_zombie.contains(321.0)) {
+                            arr[1] = 1;
+                        }
+                        if(y_of_zombie.contains(441.0)) {
+                            arr[0] = 1;
                         }
 
                         for(int i=0;i<list_of_shooters.size();i++) {
@@ -268,20 +281,10 @@ public class    Level {
             List<Lawnmower> to_be_moved=new ArrayList<Lawnmower>();
             ImageView zom=zombies_on_screen.get(i).getZombie_image();
             Lawnmower lmgr=check_lm_exists(zombies_on_screen.get(i).getRow_number());
-            if(0<=zom.getBoundsInParent().getMinX() && zom.getBoundsInParent().getMinX()<=100 && lmgr!=null) {
+            if(0<=zom.getBoundsInParent().getMinX() && zom.getBoundsInParent().getMinX()<=180 && lmgr!=null) {
                 System.out.println("rchd");
                 to_be_moved.add(lmgr);
             }
-//
-//            for(int j=0;j<list_of_lm.size();j++) {
-//                ImageView lm = list_of_lm.get(j).getImg();
-//                Zombies zombie = list_of_zombies.get(i);
-//                Bounds obj1 = lm.localToScene(lm.getBoundsInLocal());
-//                Bounds obj2 = zombie.getZombie_image().localToScene(zombie.getZombie_image().getBoundsInLocal());
-//                if (obj1.intersects(obj2)) {
-//                    to_be_moved.add(list_of_lm.get(i));
-//                }
-//            }
 
             for(int j=0;j<to_be_moved.size();j++) {
                 list_of_lm.remove(to_be_moved.get(j));

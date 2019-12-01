@@ -20,8 +20,7 @@ public class Level1 extends Level {
         list_of_zombies=new ArrayList<Zombies>();
         for(int i=0;i<arr.length;i++) {
             time.add(arr[i]);
-            list_of_zombies.add(new Zombies(lawn_parent,list_of_plants,p,this));
+            list_of_zombies.add(new NormalZombie(lawn_parent,list_of_plants,p,this));
         }
-
     }
 }

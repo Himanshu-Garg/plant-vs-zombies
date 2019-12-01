@@ -24,7 +24,7 @@ public class PeaShooter extends Plants{
     boolean shoot;
     PeaShooter(Pane pl,ImageView img,int tile,Level level) {
         attack_value=20;
-        hp=300;
+        hp=900;
         shoot=false;
         lawn_parent=pl;
         this.img=img;

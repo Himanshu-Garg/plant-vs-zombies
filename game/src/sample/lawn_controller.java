@@ -234,22 +234,10 @@ public class lawn_controller implements Initializable /*implements Initializable
                             i.setOpacity(0.3);
                             shovel.shovel_activated = false;
                             level.plant_removed(all_tiles.indexOf(i)+1,0);
-
-                            // here, add the code to remove the plant from the arraylist containing all the present plants
-                            // which is created by Udit
-                            // will be done by Udit
-                            //
-                            //
-                            //
-                            //
-                            // by ----> UDIT UDIT UDIT
-                            //
-
                         }
                         else {
                             System.out.println("No plant at tile-no- " + i + " (so aborting shovel)");
                         }
-
                     }
 
 

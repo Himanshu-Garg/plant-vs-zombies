@@ -27,6 +27,7 @@ public class Zombies extends Character {
     Player player;
     Level level;
     int row_number;
+    double duration_of_tt;
 
     public double getMili() {
         return mili;
@@ -43,15 +44,12 @@ public class Zombies extends Character {
     Zombies(Pane lp, List<Plants> l, Player player, Level level) {
         lawn_parent=lp;plants_on_field=l;
         tt = new TranslateTransition();
-        zombie_image=new ImageView(new Image(getClass().getResourceAsStream("../main/resources/zombie_normal.gif")));
         zombie_image.setLayoutX(1139);
-        zombie_image.setLayoutY(239); //change row number as well
         zombie_image.setFitHeight(138);
         zombie_image.setFitWidth(100);
-        row_number=3;
         this.player=player;
         this.level=level;
-        hp=60; attack_value=50;
+
         //lawn_parent.getChildren().add(zombie_image);
     }
 
@@ -101,7 +99,7 @@ public class Zombies extends Character {
 
     public void move() {
         lawn_parent.getChildren().add(zombie_image);
-        tt.setDuration(Duration.seconds(24.1047));
+        tt.setDuration(Duration.seconds(duration_of_tt));
         tt.setNode(zombie_image);
         tt.setToX(-1059);
         tt.play();
