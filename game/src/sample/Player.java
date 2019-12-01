@@ -23,6 +23,7 @@ public class Player implements Serializable {
 
     public void sun_collected(int n) {
         no_of_suns+=n;
+        System.out.println("no of suns - " + no_of_suns);
         level.update_no_of_suns(no_of_suns);
     }
 

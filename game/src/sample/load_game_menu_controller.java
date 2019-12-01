@@ -136,6 +136,8 @@ public class load_game_menu_controller implements Initializable {
                             Player player=new Player();
                             Pane lawn_parent = loader.load(getClass().getResource("/fxml/lawn.fxml"));
 
+                            lawn_controller lc = null;
+
 
 
                             // l = deserialized level
@@ -166,7 +168,7 @@ public class load_game_menu_controller implements Initializable {
                                     } catch (IOException e) { e.printStackTrace(); }
                             }
 
-                            s.deserialize(path, loader, player, lawn_parent);
+                            l = s.deserialize(path, loader, player, lawn_parent, lc);
                             //
                             //
                             //
@@ -182,7 +184,7 @@ public class load_game_menu_controller implements Initializable {
                             // setting level according to the i ....
                             // UDIT see if tits what you want
 
-                            //l.start_level();
+                            l.start_level();
                             //player.set_level(l);
 
                             //lawn_controller lc = loader.getController();

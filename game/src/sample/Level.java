@@ -165,6 +165,7 @@ public class Level implements Serializable {
 
     public void update_no_of_suns(int n) {
         no_of_suns.setText(Integer.toString(n));
+        System.out.println("suns updated in level GUI");
     }
 
     public int getLevel_no() {

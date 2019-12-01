@@ -62,7 +62,7 @@ public class Saver implements Serializable {
         }
     }
 
-    public Level deserialize(String path, FXMLLoader loader, Player player, Pane lawn_parent) throws IOException{
+    public Level deserialize(String path, FXMLLoader loader, Player player, Pane lawn_parent, lawn_controller lc) throws IOException{
 
         //Pane lawn_parent = loader.load(getClass().getResource("/fxml/lawn.fxml"));
 
@@ -84,8 +84,9 @@ public class Saver implements Serializable {
             level=new Level5(player,lawn_parent);
         }
 
-        lawn_controller lc = loader.getController();
+        lc = loader.getController();
         lc.setLawn_parent(lawn_parent, level);
+        lc.set_player(player);
 
 
         level.setLevel_complete(false);
