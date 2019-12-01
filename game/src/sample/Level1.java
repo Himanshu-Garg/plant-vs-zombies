@@ -16,7 +16,7 @@ public class Level1 extends Level {
         super(p,pl);
         level_no=1;
         time= new ArrayList<Double>();
-        double[] arr= {1,7,6,4,5,3,3,4,6,5,10,0.1,0.1,0.1,0.1,0.1,0.1,0.1};
+        double[] arr= {1,7,7,7,7,7,7,7,7,7,7,0.1,0.1,0.1,0.1,0.1,0.1,0.1};
         list_of_zombies=new ArrayList<Zombies>();
         for(int i=0;i<arr.length;i++) {
             time.add(arr[i]);

@@ -13,6 +13,9 @@ public class NormalZombie extends Zombies {
         super(lp,l,player,level);
         int[] arr={25,126,239,321,441};
         zombie_image=new ImageView(new Image(getClass().getResourceAsStream("../main/resources/zombie_normal.gif")));
+        zombie_image.setLayoutX(1139);
+        zombie_image.setFitHeight(138);
+        zombie_image.setFitWidth(100);
         Random random=new Random();
         int ran=random.nextInt(5);
         hp=40; attack_value=50;
@@ -20,5 +23,4 @@ public class NormalZombie extends Zombies {
         row_number=5-ran;
         duration_of_tt=24.1047;
     }
-
 }

@@ -44,9 +44,6 @@ public class Zombies extends Character {
     Zombies(Pane lp, List<Plants> l, Player player, Level level) {
         lawn_parent=lp;plants_on_field=l;
         tt = new TranslateTransition();
-        zombie_image.setLayoutX(1139);
-        zombie_image.setFitHeight(138);
-        zombie_image.setFitWidth(100);
         this.player=player;
         this.level=level;
 

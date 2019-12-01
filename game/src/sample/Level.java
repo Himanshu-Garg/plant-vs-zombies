@@ -46,10 +46,11 @@ public class    Level {
     volatile List<Zombies> row4=new ArrayList<Zombies>();
     volatile List<Zombies> row5=new ArrayList<Zombies>();
     volatile Boolean level_failed;
-    int num_of_zombies_killed;
+    volatile int num_of_zombies_killed;
     int level_no;
 
     Level(Player p, Pane lp) {
+        list_of_zombies=new ArrayList<Zombies>();
         num_of_zombies_killed=0;
         zombies_on_screen=new ArrayList<Zombies>();
         player=p;
@@ -366,10 +367,12 @@ public class    Level {
             else if(row==5)
                 row5.remove(zom);
         }
+
         if(num_of_zombies_killed==list_of_zombies.size()) {
             level_complete=true;
             level_failed=false;
             int l=level_no;
+            System.out.println("won the game");
             //Level won- give reward
             //Code BY HIMANSHU
         }
@@ -377,10 +380,10 @@ public class    Level {
 
     public void check_collision() {
         for(int i=0;i<list_of_peas.size();i++) {
-            for(int j=0;j<list_of_zombies.size();j++) {
+            for(int j=0;j<zombies_on_screen.size();j++) {
                 try {
                     ImageView pea = list_of_peas.get(i);
-                    Zombies zombie = list_of_zombies.get(j);
+                    Zombies zombie = zombies_on_screen.get(j);
                     Bounds obj1 = pea.localToScene(pea.getBoundsInLocal());
                     Bounds obj2 = zombie.getZombie_image().localToScene(zombie.getZombie_image().getBoundsInLocal());
                     if (obj1.intersects(obj2)) {
@@ -483,7 +486,7 @@ public class    Level {
             player.plant_purchased(50);
         }
         else if(x==3) {
-            p = new CherryBomb();
+            p = new CherryBomb(zombies_on_screen,i);
             player.plant_purchased(150);
         }
         p.setTile(tile);
