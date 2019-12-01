@@ -13,6 +13,7 @@ public class Sunflower extends Plants {
     Sunflower(ImageView im, Level level) {
         img=im; hp=300;
         this.level=level;
+        type_of_plant=0;
     }
 
     public double getSunposx() {

@@ -14,6 +14,7 @@ public class CherryBomb extends Plants {
         tile_no=tile;
         this.level=level;
         player=pl;
+        type_of_plant=3;
     }
 
     public void explode() {

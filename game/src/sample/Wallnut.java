@@ -8,7 +8,7 @@ import java.util.concurrent.TimeUnit;
 
 public class Wallnut extends Plants {
     int max_hp;
-    Wallnut(ImageView im,Level level){img =im; max_hp=4000; hp=4000;this.level=level;}
+    Wallnut(ImageView im,Level level){img =im; max_hp=4000; hp=4000;this.level=level;type_of_plant=2;}
     @Override
     public void setHp(int hp) {
         this.hp = hp;

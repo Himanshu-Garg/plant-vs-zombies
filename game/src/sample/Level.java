@@ -30,27 +30,64 @@ import java.util.concurrent.TimeUnit;
 
 public class Level implements Serializable {
 
-    Player player;
-    Pane lawn_parent;
-    boolean level_complete;
-    volatile List<Plants> list_of_plants;
-    volatile List<Zombies> list_of_zombies;
-    volatile List<PeaShooter> list_of_shooters;
-    volatile List<Sunflower> list_of_sunflowers;
-    volatile List<ImageView> list_of_peas;
-    List<Zombies> zombies_on_screen;
-    List<Double> time;
-    Text no_of_suns=new Text(210,42,"50");
-    volatile HashMap<Zombies,Plants> stopped_zombies;
-    volatile List<Lawnmower> list_of_lm;
-    volatile List<Zombies> row1=new ArrayList<Zombies>();
-    volatile List<Zombies> row2=new ArrayList<Zombies>();
-    volatile List<Zombies> row3=new ArrayList<Zombies>();
-    volatile List<Zombies> row4=new ArrayList<Zombies>();
-    volatile List<Zombies> row5=new ArrayList<Zombies>();
+    Player player;//
+    Pane lawn_parent;//
+    boolean level_complete;//
+    volatile List<Plants> list_of_plants;//
+    volatile List<Zombies> list_of_zombies;//
+    volatile List<PeaShooter> list_of_shooters;//
+    volatile List<Sunflower> list_of_sunflowers;//
+    volatile List<ImageView> list_of_peas;//
+    List<Zombies> zombies_on_screen;//
+    List<Double> time;//
+    Text no_of_suns;//
+    volatile HashMap<Zombies,Plants> stopped_zombies;//
+    volatile List<Lawnmower> list_of_lm;//
+    volatile List<Zombies> row1=new ArrayList<Zombies>();//
+    volatile List<Zombies> row2=new ArrayList<Zombies>();//
+    volatile List<Zombies> row3=new ArrayList<Zombies>();//
+    volatile List<Zombies> row4=new ArrayList<Zombies>();//
+    volatile List<Zombies> row5=new ArrayList<Zombies>();//
     volatile Boolean level_failed;
     volatile int num_of_zombies_killed;
     int level_no;
+
+
+    public void setLevel_failed(Boolean level_failed) {
+        this.level_failed = level_failed;
+    }
+
+    public void setNum_of_zombies_killed(int num_of_zombies_killed) {
+        this.num_of_zombies_killed = num_of_zombies_killed;
+    }
+
+    public void setLevel_no(int level_no) {
+        this.level_no = level_no;
+    }
+
+    public void setNo_of_suns(Text no_of_suns) {
+        this.no_of_suns = no_of_suns;
+    }
+
+    public void setStopped_zombies(HashMap<Zombies, Plants> stopped_zombies) {
+        this.stopped_zombies = stopped_zombies;
+    }
+
+    public void setList_of_peas(List<ImageView> list_of_peas) {
+        this.list_of_peas = list_of_peas;
+    }
+
+    public void setZombies_on_screen(List<Zombies> zombies_on_screen) {
+        this.zombies_on_screen = zombies_on_screen;
+    }
+
+    public int getNum_of_zombies_killed() {
+        return num_of_zombies_killed;
+    }
+
+    public void setLevel_complete(boolean level_complete) {
+        this.level_complete = level_complete;
+    }
 
     public int getTimesum() {
         int s=0;
@@ -60,7 +97,24 @@ public class Level implements Serializable {
         return s;
     }
 
+    public void setList_of_plants(List<Plants> list_of_plants) {
+        this.list_of_plants = list_of_plants;
+    }
+
+    public void setList_of_shooters(List<PeaShooter> list_of_shooters) {
+        this.list_of_shooters = list_of_shooters;
+    }
+
+    public void setList_of_sunflowers(List<Sunflower> list_of_sunflowers) {
+        this.list_of_sunflowers = list_of_sunflowers;
+    }
+
+    public void setList_of_lm(List<Lawnmower> list_of_lm) {
+        this.list_of_lm = list_of_lm;
+    }
+
     Level(Player p, Pane lp) {
+        no_of_suns=new Text(210,42,"50");
         list_of_zombies=new ArrayList<Zombies>();
         num_of_zombies_killed=0;
         zombies_on_screen=new ArrayList<Zombies>();
@@ -78,7 +132,7 @@ public class Level implements Serializable {
         list_of_lm=new ArrayList<Lawnmower>();
         list_of_lm.add(new Lawnmower(107,57,lp,5));
         list_of_lm.add(new Lawnmower(105,158,lp,4));
-        list_of_lm.add(new Lawnmower(106,265,lp,3));//106
+        list_of_lm.add(new Lawnmower(106,265,lp,3));
         list_of_lm.add(new Lawnmower(103,370,lp,2));
         list_of_lm.add(new Lawnmower(102,475,lp,1));
         row1=new ArrayList<Zombies>();
@@ -88,8 +142,45 @@ public class Level implements Serializable {
         row5=new ArrayList<Zombies>();
     }
 
+
+    public void setRow1(List<Zombies> row1) {
+        this.row1 = row1;
+    }
+
+    public void setRow2(List<Zombies> row2) {
+        this.row2 = row2;
+    }
+
+    public void setRow3(List<Zombies> row3) {
+        this.row3 = row3;
+    }
+
+    public void setRow4(List<Zombies> row4) {
+        this.row4 = row4;
+    }
+
+    public void setRow5(List<Zombies> row5) {
+        this.row5 = row5;
+    }
+
     public void update_no_of_suns(int n) {
         no_of_suns.setText(Integer.toString(n));
+    }
+
+    public int getLevel_no() {
+        return level_no;
+    }
+
+    public List<Plants> getList_of_plants() {
+        return list_of_plants;
+    }
+
+    public List<Lawnmower> getList_of_lm() {
+        return list_of_lm;
+    }
+
+    public Player getPlayer() {
+        return player;
     }
 
     public void start_level()

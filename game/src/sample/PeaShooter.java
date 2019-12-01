@@ -30,6 +30,7 @@ public class PeaShooter extends Plants{
         this.img=img;
         tile_no=tile;
         this.level=level;
+        type_of_plant=1;
     }
 
     public double getpeaposx() {

@@ -49,6 +49,10 @@ public class lawn_controller {
     ArrayList<ImageView> all_tiles = new ArrayList<>();
     ArrayList<ImageView> buying_tiles = new ArrayList<>();
 
+    public ArrayList<ImageView> getAll_tiles() {
+        return all_tiles;
+    }
+
     int selected_buying_plant;  // can be -> "0 = sf", "1 = ps", "2 = wn", "3 = cb"
 
     {
@@ -549,11 +553,11 @@ public class lawn_controller {
 
 
     private List<Plants> list_of_plants=new ArrayList<Plants>();
-    Level level;
+//    Level level;
 
-    public void set_level(Level lev) {
-        level=lev;
-    }
+//    public void set_level(Level lev) {
+//        level=lev;
+//    }
 
     public void plant_placed(int x, ImageView i, int tile) {
         levell.place_plant(x,i,tile);

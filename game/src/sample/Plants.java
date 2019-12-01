@@ -17,6 +17,11 @@ public class Plants extends Character {
     Pane lawn_parent;
     Player player;
     Level level;
+    int type_of_plant;
+
+    public int getType_of_plant() {
+        return type_of_plant;
+    }
 
     public void setPlayer(Player player) {
         this.player = player;

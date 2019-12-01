@@ -122,7 +122,8 @@ public class load_game_menu_controller implements Initializable {
 
                             Level l;
                             String path = names.get(finalI);
-
+                            Saver s=new Saver(new Level1(new Player(),new Pane()));
+                            s.deserialize(path);
                             //
                             //
                             //
@@ -134,24 +135,24 @@ public class load_game_menu_controller implements Initializable {
                             //
 
 
-                            FXMLLoader loader=new FXMLLoader();
-                            loader.setLocation(getClass().getResource("/fxml/lawn.fxml"));
-                            loader.load();
-
-                            Pane lawn_parent = loader.load(getClass().getResource("/fxml/lawn.fxml"));
-                            Scene lawn_scene = new Scene(lawn_parent);
-                            Player player=new Player();
-
-                            // setting level according to the i ....
-                            // UDIT see if tits what you want
-
-                            //l.start_level();
-                            //player.set_level(l);
-
-                            lawn_controller lc = loader.getController();
-                            //lc.setLawn_parent(lawn_parent, l);
-                            //lc.set_level(l);
-                            lc.set_player(player);
+//                            FXMLLoader loader=new FXMLLoader();
+//                            loader.setLocation(getClass().getResource("/fxml/lawn.fxml"));
+//                            loader.load();
+//
+//                            Pane lawn_parent = loader.load(getClass().getResource("/fxml/lawn.fxml"));
+//                            Scene lawn_scene = new Scene(lawn_parent);
+//                            Player player=new Player();
+//
+//                            // setting level according to the i ....
+//                            // UDIT see if tits what you want
+//
+//                            //l.start_level();
+//                            //player.set_level(l);
+//
+//                            lawn_controller lc = loader.getController();
+//                            //lc.setLawn_parent(lawn_parent, l);
+//                            //lc.set_level(l);
+//                            lc.set_player(player);
 
 
 
@@ -164,11 +165,11 @@ public class load_game_menu_controller implements Initializable {
                             tt3.setToX(-82);
                             tt3.play();
 
-                            lawn_parent.getChildren().add(zombiehead);
-                            //lawn_parent.getChildren().add(pea);
-                            Stage window = (Stage)((Node)mouseEvent.getSource()).getScene().getWindow();
-                            window.setScene(lawn_scene);
-                            window.show();
+//                            lawn_parent.getChildren().add(zombiehead);
+//                            //lawn_parent.getChildren().add(pea);
+//                            Stage window = (Stage)((Node)mouseEvent.getSource()).getScene().getWindow();
+//                            window.setScene(lawn_scene);
+//                            window.show();
 
                         }
                         catch (IOException e) {

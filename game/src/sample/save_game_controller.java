@@ -157,19 +157,9 @@ public class save_game_controller implements Initializable {
             @Override
             public void handle(MouseEvent mouseEvent){
                 System.out.println("Serializing level = " + level);
-                ObjectOutputStream out=null;
-                try {
-                    out=new ObjectOutputStream(new FileOutputStream(path));
-                    out.writeObject(level);
-                }
-                catch (FileNotFoundException e) { e.printStackTrace(); }
-                catch (IOException e) { e.printStackTrace(); }
-                finally {
-                    if(out!=null)
-                        try {
-                            out.close();
-                        } catch (IOException e) {}
-                }
+
+                Saver s=new Saver(level);
+                s.serialize(path);
                 // add code to serialize the present game to the "path" file
                 //
                 //
