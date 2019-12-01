@@ -14,18 +14,13 @@ public class CherryBomb extends Plants {
         tile_no=tile;
         this.level=level;
         player=pl;
-        try {
-            TimeUnit.MILLISECONDS.sleep(100);
-        } catch (InterruptedException e) { }
-        explode();
-
     }
+
     public void explode() {
         double xcen=img.getLayoutX()+47;
         double ycen=img.getLayoutY()+44.5;
-
-        System.out.println(xcen);
-        System.out.println(ycen);
+//        System.out.println(xcen);
+//        System.out.println(ycen);
         for(int i=0;i<loz.size();i++) {
             double zx=loz.get(i).getZombie_image().getBoundsInParent().getMinX();
             double zy=loz.get(i).getZombie_image().getBoundsInParent().getMinY();
@@ -34,9 +29,10 @@ public class CherryBomb extends Plants {
                 //level.zombie_killed(loz.get(i), 1);
                 loz.get(i).hit_by_pea(10000,1);
             }
-
         }
-
+        try {
+            TimeUnit.MILLISECONDS.sleep(1000);
+        } catch (InterruptedException e) { }
         img.setImage(player.getImg());
         System.out.println("reached");
         //level.plant_removed(tile_no,0);

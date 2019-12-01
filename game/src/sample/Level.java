@@ -612,6 +612,8 @@ public class Level implements Serializable {
         else if(x==3) {
             player.plant_purchased(150);
             p = new CherryBomb(zombies_on_screen,i,tile,player,this);
+            CherryBomb cb=(CherryBomb)p;
+            //cb.explode();
 
         }
         p.setTile(tile);

@@ -105,16 +105,16 @@ public class welcome_controller {
         l.start_level();
 
 
-        ImageView zombiehead =new ImageView(new Image(getClass().getResourceAsStream("../main/resources/head.png")));
-        zombiehead.setLayoutX(882);zombiehead.setLayoutY(-6);zombiehead.setFitHeight(57);zombiehead.setFitWidth(58);
+//        ImageView zombiehead =new ImageView(new Image(getClass().getResourceAsStream("../main/resources/head.png")));
+//        zombiehead.setLayoutX(882);zombiehead.setLayoutY(-6);zombiehead.setFitHeight(57);zombiehead.setFitWidth(58);
+//
+//        TranslateTransition tt3=new TranslateTransition();
+//        tt3.setNode(zombiehead);
+//        tt3.setDuration(Duration.seconds(/*l.getTimesum()*/4));
+//        tt3.setToX(-233);
+//        tt3.play();
 
-        TranslateTransition tt3=new TranslateTransition();
-        tt3.setNode(zombiehead);
-        tt3.setDuration(Duration.seconds(l.getTimesum()));
-        tt3.setToX(-233);
-        tt3.play();
-
-        lawn_parent.getChildren().add(zombiehead);
+//        lawn_parent.getChildren().add(zombiehead);
 //        lawn_parent.getChildren().add(pea);
         Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
         window.setScene(lawn_scene);

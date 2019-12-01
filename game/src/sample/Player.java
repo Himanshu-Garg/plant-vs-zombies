@@ -19,7 +19,7 @@ public class Player implements Serializable {
         return img;
     }
 
-    private int no_of_suns=50;
+    private int no_of_suns=1000;
 
     public void sun_collected(int n) {
         no_of_suns+=n;

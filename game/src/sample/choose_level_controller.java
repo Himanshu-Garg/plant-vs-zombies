@@ -102,12 +102,13 @@ public class choose_level_controller implements Initializable {
                         else if(finalI == 3) {l = new Level4(player,lawn_parent);}
                         else {l = new Level5(player,lawn_parent);}
 
+
                         l.start_level();
                         player.set_level(l);
 
                         lawn_controller lc = loader.getController();
                         lc.setLawn_parent(lawn_parent, l);
-                        //lc.set_level(l);
+                        lc.set_level(l);
                         lc.set_player(player);
 
 
@@ -117,8 +118,8 @@ public class choose_level_controller implements Initializable {
 
                         TranslateTransition tt3=new TranslateTransition();
                         tt3.setNode(zombiehead);
-                        tt3.setDuration(Duration.seconds(30));
-                        tt3.setToX(-82);
+                        tt3.setDuration(Duration.seconds(l.getTimesum()));
+                        tt3.setToX(-233);
                         tt3.play();
 
                         lawn_parent.getChildren().add(zombiehead);

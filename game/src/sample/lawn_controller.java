@@ -41,7 +41,7 @@ public class lawn_controller {
     Pane lawn_parent;
     Player player;
     Shovel shovel;
-    Image blank = new Image(getClass().getResourceAsStream("../main/resources/tiles/3.png"));
+    Image blank;
     ImageView special_power;
     public static Level levell;
     // experimenting
@@ -50,6 +50,10 @@ public class lawn_controller {
     ArrayList<ImageView> buying_tiles = new ArrayList<>();
 
     int selected_buying_plant;  // can be -> "0 = sf", "1 = ps", "2 = wn", "3 = cb"
+
+    {
+        blank = new Image(getClass().getResourceAsStream("../main/resources/tiles/3.png"));
+    }
 
     private void add_shovel() {
         shovel = new Shovel();
@@ -545,10 +549,11 @@ public class lawn_controller {
 
 
     private List<Plants> list_of_plants=new ArrayList<Plants>();
+    Level level;
 
-//    public void set_level(Level lev) {
-//        level=lev;
-//    }
+    public void set_level(Level lev) {
+        level=lev;
+    }
 
     public void plant_placed(int x, ImageView i, int tile) {
         levell.place_plant(x,i,tile);
