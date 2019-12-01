@@ -122,37 +122,73 @@ public class load_game_menu_controller implements Initializable {
 
                             Level l;
                             String path = names.get(finalI);
-                            Saver s=new Saver(new Level1(new Player(),new Pane()));
-                            s.deserialize(path);
+                           // Saver s=new Saver(new Level1(new Player(),new Pane()));
+                            //s.deserialize(path);
                             //
                             //
                             //
                             //
                             // de-serialize function here
+                            FXMLLoader loader=new FXMLLoader();
+                            loader.setLocation(getClass().getResource("/fxml/lawn.fxml"));
+                            loader.load();
+
+                            Player player=new Player();
+                            Pane lawn_parent = loader.load(getClass().getResource("/fxml/lawn.fxml"));
+
+
+
                             // l = deserialized level
                             // and path = path of file from where has to desearalize
+                            Saver s=null;
+                            ObjectInputStream in=null;
+                            try {
+                                in=new ObjectInputStream(new FileInputStream(path));
+                                s=(Saver)in.readObject();
+                                System.out.println("desearilizing level - " + s.level_no);
+                            }
+                            catch(FileNotFoundException e) {
+                                System.out.println("fnofe");
+                                e.printStackTrace();
+                            }
+                            catch (IOException e) {
+                                System.out.println("ioe");
+                                e.printStackTrace();
+                            }
+                            catch (ClassNotFoundException e) {
+                                System.out.println("cnfe");
+                                e.printStackTrace();
+                            }
+                            finally {
+                                if(in!=null)
+                                    try {
+                                        in.close();
+                                    } catch (IOException e) { e.printStackTrace(); }
+                            }
+
+                            s.deserialize(path, loader, player, lawn_parent);
+                            //
+                            //
+                            //
+                            //
                             //
                             //
 
 
-//                            FXMLLoader loader=new FXMLLoader();
-//                            loader.setLocation(getClass().getResource("/fxml/lawn.fxml"));
-//                            loader.load();
-//
-//                            Pane lawn_parent = loader.load(getClass().getResource("/fxml/lawn.fxml"));
-//                            Scene lawn_scene = new Scene(lawn_parent);
-//                            Player player=new Player();
-//
-//                            // setting level according to the i ....
-//                            // UDIT see if tits what you want
-//
-//                            //l.start_level();
-//                            //player.set_level(l);
-//
-//                            lawn_controller lc = loader.getController();
-//                            //lc.setLawn_parent(lawn_parent, l);
-//                            //lc.set_level(l);
-//                            lc.set_player(player);
+
+                            Scene lawn_scene = new Scene(lawn_parent);
+
+
+                            // setting level according to the i ....
+                            // UDIT see if tits what you want
+
+                            //l.start_level();
+                            //player.set_level(l);
+
+                            //lawn_controller lc = loader.getController();
+                            //lc.setLawn_parent(lawn_parent, l);
+                            //lc.set_level(l);
+                            //lc.set_player(player);
 
 
 
@@ -165,11 +201,11 @@ public class load_game_menu_controller implements Initializable {
                             tt3.setToX(-82);
                             tt3.play();
 
-//                            lawn_parent.getChildren().add(zombiehead);
-//                            //lawn_parent.getChildren().add(pea);
-//                            Stage window = (Stage)((Node)mouseEvent.getSource()).getScene().getWindow();
-//                            window.setScene(lawn_scene);
-//                            window.show();
+                            lawn_parent.getChildren().add(zombiehead);
+                            //lawn_parent.getChildren().add(pea);
+                            Stage window = (Stage)((Node)mouseEvent.getSource()).getScene().getWindow();
+                            window.setScene(lawn_scene);
+                            window.show();
 
                         }
                         catch (IOException e) {
